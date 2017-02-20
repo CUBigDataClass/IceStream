@@ -14,15 +14,15 @@ Yi-Chen Kuo |	emiliemili0208 | yiku2564@colorado.edu | CS Grad
 ## Tech Stack:
 GOVERNANCE INTEGRATION | TOOLS | SECURITY | OPERATIONS
 --- | --- | --- | ---
-`Project Code Management` | Zepplein |
-Pivotal | Ambari User Views |
-Github | `DATA ACCESS` |
-`Data Lifecycle & Governance` | Batch : MapReduce |
-Falcon | Script : Pig |
-Atlas | Sql : Hive |
-`Data Workflow` | NoSql : Cassandra, HBase, Accumulo, Phoenix |
-Sqoop | Stream : Storm |
-Flume | Search : Solr | 
+`Project Code Management` | Zepplein | `Administration` | `Provisioning, Managing & Monitoring`
+Pivotal | Ambari User Views | `Authentication` | Ambari
+Github | `DATA ACCESS` | `Authorization` | Cloudbreak
+`Data Lifecycle & Governance` | Batch : MapReduce | `Auditing` | ZooKeeper
+Falcon | Script : Pig | `Data Protection` | `Scheduling`
+Atlas | Sql : Hive | Ranger | Oozie
+`Data Workflow` | NoSql : Cassandra, HBase, Accumulo, Phoenix | Knox |
+Sqoop | Stream : Storm | Atlas |
+Flume | Search : Solr | HDFS Encryption |
 Kafka | In-Mem : Spark |
 NFS | ISV Enginer : Partners |
 WebHDFS | YARN : Data Operating System |

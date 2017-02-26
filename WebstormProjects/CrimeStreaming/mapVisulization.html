@@ -43,14 +43,21 @@
         <script>
             function myMap() {
                 var mapCanvas = document.getElementById("map");
-                var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+                var x_coordinates = [41.744147, 41.74396, 41.774078, 41.769373, 41.876554];
+                var y_coordinates = [-87.66571, -87.665709, -87.598491, -87.57394, -87.763192];
+
+                //var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+                var myCenter = new google.maps.LatLng(x_coordinates[0], y_coordinates[0]);
                 var mapOptions = {center: myCenter, zoom: 5};
                 var map = new google.maps.Map(mapCanvas,mapOptions);
-                var marker = new google.maps.Marker({
-                    position: myCenter,
-                    animation: google.maps.Animation.BOUNCE
-                });
-                marker.setMap(map);
+                for (i = 0; i < x_coordinates.length; i++) {
+                    var myLocation = new google.maps.LatLng(x_coordinates[i], y_coordinates[i]);
+                    var marker = new google.maps.Marker({
+                        position: myLocation,
+                        animation: google.maps.Animation.BOUNCE
+                    });
+                    marker.setMap(map);
+                }
             }
         </script>
 

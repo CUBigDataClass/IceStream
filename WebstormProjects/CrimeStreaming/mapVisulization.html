@@ -37,16 +37,20 @@
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
 
-
-        <div id="googleMap" style="width:100%;height:400px;"></div>
+        <!-- Read Chicago.json -->
+        <div id="map" style="width:100%;height:500px"></div>
 
         <script>
             function myMap() {
-                var mapProp= {
-                    center:new google.maps.LatLng(51.508742,-0.120850),
-                    zoom:5,
-                };
-                var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                var mapCanvas = document.getElementById("map");
+                var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+                var mapOptions = {center: myCenter, zoom: 5};
+                var map = new google.maps.Map(mapCanvas,mapOptions);
+                var marker = new google.maps.Marker({
+                    position: myCenter,
+                    animation: google.maps.Animation.BOUNCE
+                });
+                marker.setMap(map);
             }
         </script>
 

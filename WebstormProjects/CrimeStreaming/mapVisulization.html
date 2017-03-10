@@ -27,8 +27,6 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
-        <script src="js/readFile.js"></script>
-
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -44,7 +42,7 @@
 
         <script>
             var chicagoData = require('/dataset/Chicago.json');
-            alert(chicagoData);
+            /*
             function myMap() {
                 var mapCanvas = document.getElementById("map");
                 var x_coordinates = [41.744147, 41.74396, 41.774078, 41.769373, 41.876554];
@@ -63,9 +61,53 @@
                     marker.setMap(map);
                 }
             }
+            */
+
+//            function readFile() {
+//                jQuery.get('dataset/Chicago.txt', function(txt) {
+//                    $('#output').text(txt);
+//                    dataFile = new String(txt);
+//                });
+//            }
+
+            function myMap() {
+                jQuery.get('dataset/Chicago.txt', function(txt) {
+                    //$('#output').text(txt);
+                    dataFile = new String(txt);
+
+                    var longitudes = new Array();
+                    var latitudes = new Array();
+                    for (i = 0; i < dataFile.length;) {
+                        var coordinates_i = dataFile.indexOf("coordinates", i);
+                        var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
+                        var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);
+                        var longitude = dataFile.substring(coordinates_i + 14, end_of_longitude_i);
+                        var latitude = dataFile.substring(end_of_longitude_i + 1, end_of_latitude_i);
+                        longitudes.push(longitude);
+                        latitudes.push(latitude);
+                        i += end_of_latitude_i + 1;
+                    }
+
+                    var mapCanvas = document.getElementById("map");
+                    //var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+                    var myCenter = new google.maps.LatLng(latitudes[0], longitudes[0]);
+                    var mapOptions = {center: myCenter, zoom: 5};
+                    var map = new google.maps.Map(mapCanvas,mapOptions);
+                    for (i = 0; i < longitudes.length; i++) {
+                        var myLocation = new google.maps.LatLng(latitudes[i], longitudes[i]);
+                        var marker = new google.maps.Marker({
+                            position: myLocation,
+                            animation: google.maps.Animation.BOUNCE
+                        });
+                        marker.setMap(map);
+                    }
+
+                });
+
+            }
         </script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD_YGv2z4bP436IcJzJc6AA-RLXuzrZk&callback=myMap"></script>
-        <div id = "output"></div>
+        <!--<div id = "output"></div>-->
     </body>
 </html>

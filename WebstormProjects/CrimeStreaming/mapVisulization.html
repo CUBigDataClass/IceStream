@@ -77,7 +77,8 @@
 
                     var longitudes = new Array();
                     var latitudes = new Array();
-                    for (i = 0; i < dataFile.length;) {
+                    // for (i = 0; i < dataFile.length;) {
+                    for (i = 0; i < 100000;) {
                         var coordinates_i = dataFile.indexOf("coordinates", i);
                         var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
                         var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);
@@ -85,7 +86,7 @@
                         var latitude = dataFile.substring(end_of_longitude_i + 1, end_of_latitude_i);
                         longitudes.push(longitude);
                         latitudes.push(latitude);
-                        i += end_of_latitude_i + 1;
+                        i = end_of_latitude_i + 1;
                     }
 
                     var mapCanvas = document.getElementById("map");

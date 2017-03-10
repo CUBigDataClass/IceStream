@@ -61,8 +61,8 @@
       <file leaf-file-name="mapVisulization.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mapVisulization.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="96" column="90" lean-forward="false" selection-start-line="96" selection-start-column="90" selection-end-line="96" selection-end-column="90" />
+            <state relative-caret-position="185">
+              <caret line="84" column="58" lean-forward="true" selection-start-line="84" selection-start-column="58" selection-end-line="84" selection-end-column="58" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -83,7 +83,7 @@
       <file leaf-file-name="Chicago.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset/Chicago.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7155">
+            <state relative-caret-position="210">
               <caret line="14" column="533" lean-forward="false" selection-start-line="14" selection-start-column="525" selection-end-line="14" selection-end-column="533" />
               <folding />
             </state>
@@ -295,12 +295,12 @@
       <workItem from="1488149491569" duration="2737000" />
       <workItem from="1488171717847" duration="716000" />
       <workItem from="1488414615580" duration="744000" />
-      <workItem from="1489175337697" duration="3187000" />
+      <workItem from="1489175337697" duration="3446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7384000" />
+    <option name="totallyTimeSpent" value="7643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="539" y="23" width="858" height="877" extended-state="0" />
@@ -497,6 +497,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/Chicago.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="533" lean-forward="false" selection-start-line="14" selection-start-column="525" selection-end-line="14" selection-end-column="533" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/readFile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -505,18 +513,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/Chicago.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7155">
-          <caret line="14" column="533" lean-forward="false" selection-start-line="14" selection-start-column="525" selection-end-line="14" selection-end-column="533" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mapVisulization.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="96" column="90" lean-forward="false" selection-start-line="96" selection-start-column="90" selection-end-line="96" selection-end-column="90" />
+        <state relative-caret-position="185">
+          <caret line="84" column="58" lean-forward="true" selection-start-line="84" selection-start-column="58" selection-end-line="84" selection-end-column="58" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>

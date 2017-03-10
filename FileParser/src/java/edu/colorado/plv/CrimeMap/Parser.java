@@ -44,7 +44,7 @@ public class Parser {
     }
 
     public static String getJsonFilePath(){
-        return Parser.class.getResource("rows.json").getPath();
+        return "/Users/kuokuo/Documents/icecream/rows.json";
 
     }
 }

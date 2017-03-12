@@ -16,5 +16,5 @@ log/
 target/
 
 # No data files
-*.json
 build/
+rows.json

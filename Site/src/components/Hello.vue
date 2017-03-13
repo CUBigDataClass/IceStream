@@ -1,21 +1,17 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <router-link to="/login">Go to Login</router-link>
-    </ul>
+    <div class="top">
+      <ul>
+        <li><router-link to="#menu">☰ Menu</router-link></li>
+        <li style="float:right"><router-link to="/login">LogIn</router-link></li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+  name: 'hello'
 }
 </script>
 

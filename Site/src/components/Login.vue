@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="login">
     <h1>{{ msg }}</h1>
     <button class="btn btn-primary btn-lg" v-on:click="greet">Test</button>
   </div>
@@ -12,7 +12,6 @@ import VueAxios from 'vue-axios'
 
 Vue.use(VueAxios, axios)
 export default {
-  name: 'hello',
   data () {
     return {
       msg: 'Click Button To Login'

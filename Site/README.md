@@ -25,6 +25,9 @@ npm run unit
 
 # run all tests
 npm test
+
+##install vuetify in exsiting projects
+npm install vuetify --save-dev
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

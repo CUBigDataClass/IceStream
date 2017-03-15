@@ -5,6 +5,7 @@
   "author": "IceStream",
   "private": true,
   "scripts": {
+    "dev": "node wwwroot/dev-server.js",
     "start": "node wwwroot/dev-server.js",
     "build": "node wwwroot/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",

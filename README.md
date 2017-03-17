@@ -15,9 +15,13 @@ Yi-Chen Kuo |	emiliemili0208 | yiku2564@colorado.edu | CS Grad
 
 ## Data Set:
 https://www.data.gov/
+
 Los Angeles(2012-2015) https://catalog.data.gov/dataset/crimes-2012-2015
+
 Rockford (2011-2016) https://catalog.data.gov/dataset/city-of-rockford-crime-offenses-2016-ytd
+
 Austin(2014) https://catalog.data.gov/dataset/annual-crime-2014
+
 Chicago(2001-2016) https://catalog.data.gov/dataset/crimes-2001-to-present-398a4
 
 ## Tech Stack:

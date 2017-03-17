@@ -54,5 +54,5 @@ https://medium.com/@mbostock/introducing-d3-scale-61980c51545f#.l0eun9u85
 
 ## Run map rendering code:
 Open project on WebStorm and Run "mapVisualization.html":
-!()[img/1.png]
-!()[img/demo1.gif]
+![](img/1.png)
+![](img/demo1.gif)

@@ -19,9 +19,13 @@ Yi-Chen Kuo |	emiliemili0208 | yiku2564@colorado.edu | CS Grad
 
 ## Data Set:
 https://www.data.gov/
+
 Los Angeles(2012-2015) https://catalog.data.gov/dataset/crimes-2012-2015
+
 Rockford (2011-2016) https://catalog.data.gov/dataset/city-of-rockford-crime-offenses-2016-ytd
+
 Austin(2014) https://catalog.data.gov/dataset/annual-crime-2014
+
 Chicago(2001-2016) https://catalog.data.gov/dataset/crimes-2001-to-present-398a4
 
 ## Tech Stack:
@@ -46,3 +50,16 @@ https://github.com/wsargent/docker-cheat-sheet
 ## APIs:
 Google Maps
 https://blog.gtwang.org/programming/getting-started-google-maps-javascript-api/
+## d3js d3-geo
+Map rendering tutorial
+https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c#.5z0b5lpbo
+https://medium.com/@dschnr/using-clustering-to-create-a-new-d3-js-color-scale-dec4ccd639d2#.mykpwd1cj
+https://medium.com/@mbostock/introducing-d3-scale-61980c51545f#.l0eun9u85
+
+## WebStorm
+
+
+## Run map rendering code:
+Open project on WebStorm and Run "mapVisualization.html":
+![](img/1.png)
+![](img/demo1.gif)

@@ -18,3 +18,8 @@ target/
 # No data files
 build/
 rows.json
+
+# ignore configuration file
+
+green_arrow_setting.json
+

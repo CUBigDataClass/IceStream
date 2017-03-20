@@ -14,14 +14,11 @@ function queryDB(num){
 	})
 
 	// find position
-	var query = { Latitude: 1, Longtitude: 1 }
-	var positionList = []
+	var query = { Latitude: 1, Longtitude: 1, Date: 1, CrimeType: 1}
 	mycollection.find({}, query).limit(num).skip(0, function (err, docs) { 
 		console.log(docs)
 		db.close()
 		return docs
 		
 	})
-
-	return positionList
 }

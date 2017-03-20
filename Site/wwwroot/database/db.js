@@ -21,4 +21,3 @@ function queryDB(num, callback){
 	})
 
 }
-queryDB(5, (json) => { console.log(json) }

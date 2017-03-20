@@ -40,6 +40,7 @@
         <!-- Read Chicago.json -->
         <p id="key" hidden>This paragraph should be hidden.</p>
         <div id="mapVisualization">
+
             <div id="map" style="width:100%;height:500px"></div>
             <script>
 
@@ -65,6 +66,11 @@
 
                         var mapCanvas = document.getElementById("map");
                         //var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+                        var pinColor = "006400";
+                        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+                            new google.maps.Size(50, 50),
+                            new google.maps.Point(0,0),
+                            new google.maps.Point(10, 34));
                         var myCenter = new google.maps.LatLng(latitudes[0], longitudes[0]);
                         var mapOptions = {center: myCenter, zoom: 5};
                         var map = new google.maps.Map(mapCanvas,mapOptions);
@@ -72,7 +78,8 @@
                             var myLocation = new google.maps.LatLng(latitudes[i], longitudes[i]);
                             var marker = new google.maps.Marker({
                                 position: myLocation,
-                                animation: google.maps.Animation.BOUNCE
+                                animation: google.maps.Animation.BOUNCE,
+                                icon: pinImage
                             });
                             marker.setMap(map);
                         }
@@ -86,21 +93,6 @@
 
             <!--<script src=googleLink></script>-->
         </div> <!-- end of <div id="mapVisualization"> -->
-
-        <div>
-            <p>Just p1 </p>
-            <p>Just p2 </p>
-            <p>Just p3 </p>
-            <p>Just p4 </p>
-            <p>Just p5 </p>
-            <script>
-                d3.selectAll("p")
-                    .data([4, 8, 15, 16, 23, 42])
-                    .style("font-size", function(d) { return d + "px"; });
-                d3.select("body").transition()
-                    .style("background-color", "black");
-            </script>
-        </div>
 
         <!--<div id = "output"></div>-->
     </body>

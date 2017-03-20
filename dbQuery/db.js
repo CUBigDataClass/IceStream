@@ -1,9 +1,11 @@
+const credential = require('../Site/green_arrow_setting.json')
+
 function queryDB(num){
 
 	var mongojs = require('mongojs')
 
-	var db = mongojs('mongodb://<db name>:<db password>@<db address>')
-	var mycollection = db.collection('<collection name>')
+	var db = mongojs('mongodb://' + credential.db_account+':' + credential.db_password +'@'+ credential.db_url)
+	var mycollection = db.collection(credential.db_collection)
 
 	db.on('error', function (err) {
 	    console.log('database error', err)
@@ -31,3 +33,4 @@ function queryDB(num){
 
 	return positionList
 }
+queryDB(100)

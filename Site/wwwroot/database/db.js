@@ -17,7 +17,6 @@ module.exports = {
 			for(var index in docs){
 				data.push(docs[index])
 			}
-			db.close()
 			callback(data)
 		})
 	}

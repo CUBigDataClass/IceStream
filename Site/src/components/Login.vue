@@ -20,8 +20,8 @@ export default {
   },
   methods: {
     greet: function (event) {
-      axios.get('/api/login').then(
-        response => { console.log(response); alert(response.data.message) }
+      axios.post('/api/map', { City: 'LA' }).then(
+        response => { console.log(response); alert(response.data[0].CrimeType) }
       )
     }
   }

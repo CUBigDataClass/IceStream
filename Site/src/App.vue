@@ -80,11 +80,9 @@
     <!--content-->
   <div class="content">
     <v-content class="pt-0">
-      <v-container fluid>
         <transition mode="out-in">
           <router-view></router-view>
         </transition>
-      </v-container>
     </v-content>
   </div>
 

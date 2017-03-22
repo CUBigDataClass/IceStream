@@ -1,4 +1,4 @@
-# greenarrow
+# Green Arrow
 
 > the website for Green Arrow
 
@@ -22,6 +22,7 @@ npm run unit
 
 # run all tests
 npm test
+
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

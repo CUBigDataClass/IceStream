@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "mongojs": "^2.4.0",
+    "openlayers": "^4.0.1",
     "vue": "^2.2.2",
     "vue-axios": "^2.0.1",
     "vue-date": "^1.1.5",

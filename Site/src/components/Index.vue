@@ -1,5 +1,6 @@
 <template>
-  <div id="index">
+  <div class="index">
+    <div id="map" class="map"></div>
   </div>
 </template>
 

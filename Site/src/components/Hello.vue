@@ -1,15 +1,18 @@
 <template>
   <div class="hello">
-    <div id="map" class="map"></div>
-    <ol-map>
+    <ol-map> 
+   <ol-marker/>
+   <ol-marker :coords= "[-38.5433, -3.71722]" /> 
+   <ol-marker :coords= "[-38.5432, -3.71722]" /> 
+   <ol-marker :coords= "[-38.5434, -3.71722]" /> 
     </ol-map>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import ol from '../olwrapper/main'
-Vue.use(ol)
+import VueOL from '../olwrapper/main'
+Vue.use(VueOL)
 export default {
   name: 'hello',
   data () {
@@ -18,20 +21,7 @@ export default {
     }
   },
   created: function () {
-    console.log(ol)
-    ol.Map({
-      target: 'map',
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      view: new ol.View({
-        center: ol.proj.fromLonLat([37.41, 8.82]),
-        zoom: 4
-      })
-    })
-    console.log('sucess')
+    console.log('xxxerror')
   }
 }
 </script>

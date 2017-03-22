@@ -31,4 +31,4 @@ URL: http://localhost:63342/GreenArrow/mapVisulization.html
 Run
 ![](img/3.png)
 
-![](img/demo1.gif)
+![](img/demo.gif)

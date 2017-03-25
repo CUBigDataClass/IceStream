@@ -2,7 +2,7 @@
   <div id="app">
   <v-app top-toolbar left-fixed-sidebar sidebar-under-toolbar>
 
-  <header>
+  <!--<header>-->
     <!--Navbar-->
     <div class="navbar">
       <v-toolbar fixed class="green darken-1">
@@ -15,7 +15,7 @@
         </v-toolbar-items>
       </v-toolbar>
     </div>
-  </header>
+  <!--</header>-->
 
   <!--sidebar-->
   <div class="flosidebar">
@@ -46,6 +46,8 @@
           </select>
         </div>
       </div>
+      <v-divider></v-divider>
+      <button @click="submitButton" class="btn btn-primary green">submit</button>
         <v-divider></v-divider>
 
         <!--date-->
@@ -74,6 +76,10 @@
         <input type="checkbox" id="crimetype4" value="crimetype4" v-model="crimetype">
         <label for="crimetype4">crimetype4</label>
       </div>
+     
+
+      <!--submit button-->
+      
     </v-sidebar>
   </div>
 
@@ -91,8 +97,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import datepicker from 'vue-date'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
+Vue.use(VueAxios, axios)
 export default {
   name: 'app',
   components: { datepicker },
@@ -100,13 +110,31 @@ export default {
     return {
       sidebar: false,
       checkedNames: [],
-      start: '2017-03-15',
-      end: '2017-03-16'
+      start: '',
+      end: '',
+      selected: '',
+      crimetype: []
     }
   },
   methods: {
     openSidebar () {
       this.sidebar = !this.sidebar
+    },
+    submitButton: function () {
+      axios.get('/api/', {
+        params: {
+          City: this.selected,
+          Crimetype: this.crimetype,
+          Starttime: this.start,
+          Endtime: this.end
+        }
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }
@@ -127,7 +155,14 @@ a {
 
 .navbar {
     margin:0;
+    height:64px;
 }
+
+.navbar a {
+ height: 36px;
+}
+
+
 
 .content {
     word-wrap: break-word;
@@ -166,4 +201,21 @@ a {
 .datepicker {
     padding-left:5%;
 }
+
+.flosidebar button {
+  margin-left: 5%;
+}
+
+.flosidebar {
+  margin:0;
+}
+
+.content {
+  margin: 0;
+}
+
+.navbar a {
+  text-align: center;
+}
+
 </style>

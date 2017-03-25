@@ -47,7 +47,12 @@
         </div>
       </div>
       <v-divider></v-divider>
-      <button @click="submitButton" class="btn btn-primary green">submit</button>
+      <template v-if="this.selected == ''">
+        <button title="Please select a city!" disabled class="btn btn-primary green">submit</button>
+      </template>
+      <template v-else>
+        <button @click="submitButton" class="btn btn-primary green">submit</button>
+      </template>
         <v-divider></v-divider>
 
         <!--date-->

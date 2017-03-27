@@ -1,4 +1,4 @@
-ipse
+# Eclipse
 .classpath
 .project
 .settings/
@@ -22,3 +22,4 @@ rows.json
 # ignore configuration file
 
 green_arrow_setting.json
+

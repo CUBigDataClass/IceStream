@@ -14,16 +14,21 @@ public class JavaDatasetQuery {
 		SparkSession spark = SparkSession
 			      .builder()
 			      .appName("JavaDatasetQuery")
+			      .config("spark.master", "local")
 			      .getOrCreate();
 		
 		// Create DataFrame representing the stream of input lines from /dataset/Chicago.json
-		StructType userSchema = new StructType().add("longitude", "Double").add("latitude", "Double");
+		StructType userSchema = new StructType().add("longitude", "double").add("latitude", "double");
 		Dataset<Row> jsonDF = spark
 				.readStream()
 				.format("json")
 				.schema(userSchema)
 				.json(getCurrentPackagePath() + "/dataset/Chicago.json");
-				
+		
+		jsonDF.writeStream()
+			.format("console")
+			.start();
+		
 	}
 	
 	private static String getCurrentPackagePath() {

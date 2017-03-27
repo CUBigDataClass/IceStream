@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.types.StructType;
 
 public class JavaDatasetQuery {
 
@@ -15,11 +16,14 @@ public class JavaDatasetQuery {
 			      .appName("JavaDatasetQuery")
 			      .getOrCreate();
 		
-		Dataset<Row> lines = spark
+		// Create DataFrame representing the stream of input lines from /dataset/Chicago.json
+		StructType userSchema = new StructType().add("longitude", "Double").add("latitude", "Double");
+		Dataset<Row> jsonDF = spark
 				.readStream()
 				.format("json")
-				.json(path)
-				.load();
+				.schema(userSchema)
+				.json(getCurrentPackagePath() + "/dataset/Chicago.json");
+				
 	}
 	
 	private static String getCurrentPackagePath() {

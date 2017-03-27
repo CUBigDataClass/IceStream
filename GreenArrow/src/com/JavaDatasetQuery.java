@@ -14,6 +14,7 @@ public class JavaDatasetQuery {
 		SparkSession spark = SparkSession
 			      .builder()
 			      .appName("JavaDatasetQuery")
+			      .config("spark.master", "local")
 			      .getOrCreate();
 		
 		// Create DataFrame representing the stream of input lines from /dataset/Chicago.json

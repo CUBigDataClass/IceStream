@@ -1,4 +1,8 @@
 # IceStream
+Read from mongoDB in Java:
+https://docs.mongodb.com/spark-connector/master/java-api/
+https://docs.mongodb.com/spark-connector/master/java/read-from-mongodb/
+https://docs.mongodb.com/spark-connector/master/scala/streaming/
 
 Streaming dataset:
 http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html

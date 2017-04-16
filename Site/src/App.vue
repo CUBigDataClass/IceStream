@@ -5,7 +5,7 @@
   <!--<header>-->
     <!--Navbar-->
     <div class="navbar">
-      <v-toolbar fixed class="green darken-1">
+      <v-toolbar fixed class="black darken-1">
         <v-toolbar-side-icon @click.native.stop="openSidebar()"></v-toolbar-side-icon>
         <v-toolbar-title ><h3>Green Arrow</h3></v-toolbar-title>
         <v-toolbar-items>
@@ -97,7 +97,7 @@
     </v-content>
   </div>
 
-</v-app> 
+</v-app>
 </div>
 </template>
 

@@ -12,7 +12,7 @@
     props: {
       coords: {
         type: Array,
-        default: () => [-38.5431, -3.71722]
+        default: () => [-87.758888, 41.973387]
       },
       markerData: Object,
       iconImageUrl: String

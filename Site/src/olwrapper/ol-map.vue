@@ -23,7 +23,7 @@
       center: {
         type: Array,
         default: () => {
-          return [-38.5431, -3.71722]
+          return [-87.758888, 41.973387]
         }
       }
     },
@@ -37,7 +37,7 @@
           })
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([-38.5431, -3.71722]),
+          center: ol.proj.fromLonLat([-87.758888, 41.973387]),
           zoom: 18
         })
       })

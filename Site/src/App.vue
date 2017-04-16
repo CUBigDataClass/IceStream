@@ -9,7 +9,8 @@
         <v-toolbar-side-icon @click.native.stop="openSidebar()"></v-toolbar-side-icon>
         <v-toolbar-title ><h3>Green Arrow</h3></v-toolbar-title>
         <v-toolbar-items>
-          <v-toolbar-item><router-link to="/">Home</router-link></v-toolbar-item>
+          <v-toolbar-item><router-link to="/">Map</router-link></v-toolbar-item>
+          <v-toolbar-item><router-link to="/login"><span class=""></span> Statistics</router-link></v-toolbar-item>
           <v-toolbar-item><a href="https://github.com/CUBigDataClass/IceStream">Github</a></v-toolbar-item>
           <v-toolbar-item><router-link to="/login"><span class="glyphicon glyphicon-log-in"></span> Login</router-link></v-toolbar-item>
         </v-toolbar-items>
@@ -29,19 +30,19 @@
       <!--city-->
       <div class="city">
         <h4>City</h4>
-        <hr />
+        <hr/>
         <!--select button-->
         <div class="select type">
           <select class="grey black--text" v-model="selected">
             <option disabled value="">Please select a city</option>
             <optgroup label="IL">
-              <option>Chicago</option>
+              <option value="Chicago">Chicago</option>
             </optgroup>
             <optgroup label="CO">
-              <option>Denver</option>
+              <option value="Denver">Denver</option>
             </optgroup>
             <optgroup label="WA">
-              <option>Seattle</option>
+              <option value="Seattle">Seattle</option>
             </optgroup>
           </select>
         </div>
@@ -54,6 +55,10 @@
         <button @click="submitButton" class="btn btn-primary green">submit</button>
       </template>
         <v-divider></v-divider>
+
+      <div class="city">
+
+      </div>
 
         <!--date-->
       <div class="date-select">

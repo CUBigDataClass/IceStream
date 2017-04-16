@@ -5,7 +5,13 @@
 <style>
   /* TODO vale expor a complexidade das 'features' do openlayer aqui? */
 </style>
+<!-- <script src="./js/OpenLayers.js"></script> -->
+<!-- <script type="text/javascript" src="http://dev.openlayers.org/OpenLayers.js"></script> -->
 <script>
+
+</script>
+<script>
+
   const ol = require('openlayers')
   module.exports = {
     name: 'OLMarker',
@@ -48,9 +54,9 @@
       } else {
         this.style = new ol.style.Style({
           image: new ol.style.Circle({
-            radius: 7,
+            radius: 10,
             snapToPixel: false,
-            fill: new ol.style.Fill({color: 'blue'}),
+            fill: new ol.style.Fill({color: 'green'}),
             stroke: new ol.style.Stroke({
               color: 'white', width: 2
             })

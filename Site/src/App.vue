@@ -2,20 +2,21 @@
   <div id="app">
   <v-app top-toolbar left-fixed-sidebar sidebar-under-toolbar>
 
-  <header>
+  <!--<header>-->
     <!--Navbar-->
     <div class="navbar">
-      <v-toolbar fixed class="green darken-1">
+      <v-toolbar fixed class="black darken-1">
         <v-toolbar-side-icon @click.native.stop="openSidebar()"></v-toolbar-side-icon>
         <v-toolbar-title ><h3>Green Arrow</h3></v-toolbar-title>
         <v-toolbar-items>
-          <v-toolbar-item><router-link to="/">Home</router-link></v-toolbar-item>
+          <v-toolbar-item><router-link to="/">Map</router-link></v-toolbar-item>
+          <v-toolbar-item><router-link to="/login"><span class=""></span> Statistics</router-link></v-toolbar-item>
           <v-toolbar-item><a href="https://github.com/CUBigDataClass/IceStream">Github</a></v-toolbar-item>
           <v-toolbar-item><router-link to="/login"><span class="glyphicon glyphicon-log-in"></span> Login</router-link></v-toolbar-item>
         </v-toolbar-items>
       </v-toolbar>
     </div>
-  </header>
+  <!--</header>-->
 
   <!--sidebar-->
   <div class="flosidebar">
@@ -29,24 +30,35 @@
       <!--city-->
       <div class="city">
         <h4>City</h4>
-        <hr />
+        <hr/>
         <!--select button-->
         <div class="select type">
           <select class="grey black--text" v-model="selected">
             <option disabled value="">Please select a city</option>
             <optgroup label="IL">
-              <option>Chicago</option>
+              <option value="Chicago">Chicago</option>
             </optgroup>
             <optgroup label="CO">
-              <option>Denver</option>
+              <option value="Denver">Denver</option>
             </optgroup>
             <optgroup label="WA">
-              <option>Seattle</option>
+              <option value="Seattle">Seattle</option>
             </optgroup>
           </select>
         </div>
       </div>
+      <v-divider></v-divider>
+      <template v-if="this.selected == ''">
+        <button title="Please select a city!" disabled class="btn btn-primary green">submit</button>
+      </template>
+      <template v-else>
+        <button @click="submitButton" class="btn btn-primary green">submit</button>
+      </template>
         <v-divider></v-divider>
+
+      <div class="city">
+
+      </div>
 
         <!--date-->
       <div class="date-select">
@@ -74,6 +86,10 @@
         <input type="checkbox" id="crimetype4" value="crimetype4" v-model="crimetype">
         <label for="crimetype4">crimetype4</label>
       </div>
+     
+
+      <!--submit button-->
+      
     </v-sidebar>
   </div>
 
@@ -86,13 +102,17 @@
     </v-content>
   </div>
 
-</v-app> 
+</v-app>
 </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import datepicker from 'vue-date'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
+Vue.use(VueAxios, axios)
 export default {
   name: 'app',
   components: { datepicker },
@@ -100,13 +120,31 @@ export default {
     return {
       sidebar: false,
       checkedNames: [],
-      start: '2017-03-15',
-      end: '2017-03-16'
+      start: '',
+      end: '',
+      selected: '',
+      crimetype: []
     }
   },
   methods: {
     openSidebar () {
       this.sidebar = !this.sidebar
+    },
+    submitButton: function () {
+      axios.get('/api/', {
+        params: {
+          City: this.selected,
+          Crimetype: this.crimetype,
+          Starttime: this.start,
+          Endtime: this.end
+        }
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }
@@ -127,7 +165,14 @@ a {
 
 .navbar {
     margin:0;
+    height:64px;
 }
+
+.navbar a {
+ height: 36px;
+}
+
+
 
 .content {
     word-wrap: break-word;
@@ -166,4 +211,21 @@ a {
 .datepicker {
     padding-left:5%;
 }
+
+.flosidebar button {
+  margin-left: 5%;
+}
+
+.flosidebar {
+  margin:0;
+}
+
+.content {
+  margin: 0;
+}
+
+.navbar a {
+  text-align: center;
+}
+
 </style>

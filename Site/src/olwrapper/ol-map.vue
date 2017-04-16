@@ -38,7 +38,7 @@
         ],
         view: new ol.View({
           center: ol.proj.fromLonLat([-87.758888, 41.973387]),
-          zoom: 18
+          zoom: 8
         })
       })
       // http://openlayers.org/en/latest/apidoc/ol.Map.html#on

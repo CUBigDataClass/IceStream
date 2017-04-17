@@ -36,7 +36,7 @@
 
   <!--sidebar-->
   <div class="flosidebar">
-    <v-sidebar fixed class="red darken-2 white--text" v-model="sidebar">
+    <v-sidebar fixed class="darken-2 white--text" v-model="sidebar">
       <!--title-->
       <div class="px-4">
         <h3 class="mt-3">FILTERS</h3>

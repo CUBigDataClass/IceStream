@@ -23,7 +23,7 @@
       center: {
         type: Array,
         default: () => {
-          return [-87.758888, 41.973387]
+          return [-101.9497571, 38.9287866]
         }
       }
     },
@@ -37,8 +37,8 @@
           })
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([-87.758888, 41.973387]),
-          zoom: 8
+          center: ol.proj.fromLonLat([-101.9497571, 38.9287866]),
+          zoom: 5
         })
       })
       // http://openlayers.org/en/latest/apidoc/ol.Map.html#on

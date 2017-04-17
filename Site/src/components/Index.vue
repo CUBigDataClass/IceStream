@@ -27,7 +27,7 @@ export default {
     }
   },
   created: function () {
-    console.log('xxxerror')
+    console.log('index error')
   }
 }
 </script>

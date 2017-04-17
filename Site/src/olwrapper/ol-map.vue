@@ -38,7 +38,7 @@
         ],
         view: new ol.View({
           center: ol.proj.fromLonLat([-101.9497571, 38.9287866]),
-          zoom: 5
+          zoom: 2
         })
       })
       // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
@@ -66,34 +66,12 @@
       })
 
       // animation - start
+      // http://openlayers.org/en/latest/examples/animation.html
       this.olmap.getView().animate({
-        center: ol.proj.fromLonLat([-101.9497571, 0.9287866]),
+        center: ol.proj.fromLonLat([-101.9497571, 38.9287866]),
         duration: 2000,
-        easing: bounce
+        zoom: this.olmap.getView().getZoom() + 3
       })
-      var bounce = ol.animation.bounce({
-        resolution: this.olmap.getView().getResolution() * 4
-      })
-      alert(this.olmap.getView().getResolution())
-      // start the pan at the current center of the map
-      var pan = ol.animation.pan({
-        source: this.olmap.getView().getCenter()
-      })
-      this.olmap.beforeRender(bounce)
-      this.olmap.beforeRender(pan)
-      // when we set the center to the new location, the animated move will
-      // trigger the bounce and pan effects
-      this.olmap.getView().setCenter([-101.9497571, 38.9287866])
-
-      // alert(this.olmap.getView().getResolution())
-
-      var zoom = ol.animation.zoom({
-        resolution: this.olmap.getView().getResolution()
-      })
-      this.olmap.beforeRender(zoom)
-      // setting the resolution to a new value will smoothly zoom in or out
-      // depending on the factor
-      this.olmap.getView().setResolution(this.olmap.getView().getResolution() * 3)
       // animation - end
     },
     data () {

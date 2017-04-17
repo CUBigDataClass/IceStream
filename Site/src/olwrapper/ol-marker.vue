@@ -23,13 +23,14 @@
       markerData: Object,
       iconImageUrl: String
     },
+
     data () {
       return {
         feature: null,
         style: null,
         vectorSource: null,
         vectorLayer: null,
-        newcoords: []
+        newcoords: [-87.758888, 80.973387]
       }
     },
     watch: {
@@ -58,7 +59,7 @@
             snapToPixel: false,
             fill: new ol.style.Fill({color: 'green'}),
             stroke: new ol.style.Stroke({
-              color: 'white', width: 2
+              color: 'white', width: 3
             })
           })
         })

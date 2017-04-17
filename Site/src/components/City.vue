@@ -1,6 +1,6 @@
 <template>
   <div id="city">
-
+    <!-- this vue has not finished yet -->
   </div>
 </template>
 

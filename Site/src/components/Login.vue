@@ -34,7 +34,7 @@ export default {
   text-align: center;
 }
 
-h1, h2 {
+/*h1, h2 {
   font-weight: normal;
 }
 
@@ -50,5 +50,5 @@ li {
 
 a {
   color: #42b983;
-}
+}*/
 </style>

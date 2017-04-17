@@ -9,10 +9,13 @@ db.on('error', (err) => {console.log('database error', err)})
 db.on('connect', () => {console.log('database connected')})
 
 module.exports = {
-	queryDB(num, callback){
+	queryByNum(num, callback){
 
-		var query = {Latitude: 1, Longitude: 1, Date: 1, CrimeType: 1}
+		var query = {Latitude: 1, Longitude: 1, Date: 1, CrimeType: 1, City:1}
 		mycollection.find({}, query).limit(num).skip(0, function (err, docs) {
+			if(err) { 
+				console.log("Database query error") 
+			}
 			var data = [];
 			for(var index in docs){
 				data.push(docs[index])
@@ -20,5 +23,20 @@ module.exports = {
 			db.close()
 			callback(data)
 		})
+	},
+
+	queryByCity(cityName, num, callback){
+
+		var query = {Latitude: 1, Longitude: 1, Date: 1, CrimeType: 1, City:1}
+		mycollection.find( { City: cityName }, query).limit(num).skip(0, function (err, docs) { 
+			if(err) { 
+				console.log("Database query error") 
+			}
+			db.close()
+			callback(docs)
+		})
+		
 	}
+
+
 }

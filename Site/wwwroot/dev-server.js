@@ -1,6 +1,6 @@
 require('./check-versions')()
 
-var db = require('./database/db')
+var db = require('./database/db.js')
 
 var config = require('../config')
 if (!process.env.NODE_ENV) {
@@ -77,9 +77,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-//api define here 
+//api define here
 app.get('/api/login', (req, res) => {
-  const cb = (r) => {console.log(r); res.status(200).send(r)} 
+  const cb = (r) => {console.log(r); res.status(200).send(r)}
   db.queryDB(5, cb)
 });
 

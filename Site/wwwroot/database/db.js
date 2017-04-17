@@ -11,8 +11,8 @@ db.on('connect', () => {console.log('database connected')})
 module.exports = {
 	querybyNum(num, callback){
 
-		var query = { Latitude: 1, Longitude: 1, Date: 1, CrimeType: 1}
-		mycollection.find({}, query).limit(num).skip(0, function (err, docs) { 
+		var query = {Latitude: 1, Longitude: 1, Date: 1, CrimeType: 1, City:1}
+		mycollection.find({}, query).limit(num).skip(0, function (err, docs) {
 			var data = [];
 			for(var index in docs){
 				data.push(docs[index])

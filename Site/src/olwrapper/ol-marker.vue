@@ -30,7 +30,7 @@
         style: null,
         vectorSource: null,
         vectorLayer: null,
-        newcoords: [-87.758888, 80.973387]
+        newcoords: null
       }
     },
     watch: {

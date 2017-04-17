@@ -7,11 +7,12 @@ import com.google.gson.JsonArray;
  */
 public class Crime {
     double mLatitude;
-    double mLongtitude;
+    double mLongitude;
     String mDate;
     String mCrimeType;
     String mStatus;
     String mLocation;
+    String mCity = "NYC";
 
     public Crime(String date, String crimeType, String status, String location, double latitude, double longtitude){
         mDate = date;
@@ -19,17 +20,17 @@ public class Crime {
         mStatus = status;
         mLocation = location;
         mLatitude = latitude;
-        mLongtitude = longtitude;
+        mLongitude = longtitude;
     }
 
     public Crime(JsonArray json){
-        assert(json.size() == 22);
-        mDate = (json.get(8).toString());
-        mCrimeType = (json.get(16).toString());
+        assert(json.size() == 31);
+        mDate = (json.get(9).toString());
+        mCrimeType = (json.get(15).toString());
         mStatus = (json.get(18).toString());
         mLocation = (json.get(19).toString());
         mLatitude =((JsonArray)json.get(21)).get(1).getAsDouble();
-        mLongtitude =((JsonArray)json.get(21)).get(2).getAsDouble();
+        mLongitude =((JsonArray)json.get(21)).get(2).getAsDouble();
 
 
     }
@@ -46,12 +47,12 @@ public class Crime {
         this.mLatitude = mLatitude;
     }
 
-    public double getLongtitude() {
-        return mLongtitude;
+    public double getLongitude() {
+        return mLongitude;
     }
 
-    public void setLongtitude(double mLongtitude) {
-        this.mLongtitude = mLongtitude;
+    public void setLongitude(double mLongitude) {
+        this.mLongitude = mLongitude;
     }
 
     public String getDate() {

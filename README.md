@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # IceStream
 
-Pleas review other branches :)
 =======
 # ATLS-5214-BigDataArchitecture Team: IceStream
 ## Links
@@ -51,4 +49,3 @@ https://github.com/wsargent/docker-cheat-sheet
 ## APIs:
 Google Maps
 https://blog.gtwang.org/programming/getting-started-google-maps-javascript-api/
->>>>>>> 9fa58080d1c9c5a2df1d5321f7e4e1712e1d9949

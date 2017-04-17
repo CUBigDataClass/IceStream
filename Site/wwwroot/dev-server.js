@@ -80,7 +80,7 @@ app.use(function (req, res, next) {
 //api define here 
 app.get('/api/login', (req, res) => {
   const cb = (r) => {console.log(r); res.status(200).send(r)} 
-  db.queryDB(5, cb)
+  db.querybyNum(5, cb)
 });
 
 app.post('/api/login', (req, res) => {

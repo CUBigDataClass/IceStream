@@ -9,7 +9,7 @@ db.on('error', (err) => {console.log('database error', err)})
 db.on('connect', () => {console.log('database connected')})
 
 module.exports = {
-	queryDB(num, callback){
+	querybyNum(num, callback){
 
 		var query = { Latitude: 1, Longitude: 1, Date: 1, CrimeType: 1}
 		mycollection.find({}, query).limit(num).skip(0, function (err, docs) { 
@@ -21,4 +21,6 @@ module.exports = {
 			callback(data)
 		})
 	}
+
+
 }

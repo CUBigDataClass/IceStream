@@ -1,6 +1,5 @@
 # IceStream
 
-=======
 # ATLS-5214-BigDataArchitecture Team: IceStream
 ## Links
 [Github Repo](https://github.com/CUBigDataClass/IceStream)

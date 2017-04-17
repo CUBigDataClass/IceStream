@@ -9,7 +9,7 @@
   #themap {
     width:100%;
     height:100%;
-    margin:0px;
+    margin: 0px;
     padding: 0px;
   }
 </style>
@@ -64,6 +64,37 @@
           this.$emit('selfeature', feature)
         }
       })
+
+      // animation - start
+      this.olmap.getView().animate({
+        center: ol.proj.fromLonLat([-101.9497571, 0.9287866]),
+        duration: 2000,
+        easing: bounce
+      })
+      var bounce = ol.animation.bounce({
+        resolution: this.olmap.getView().getResolution() * 4
+      })
+      alert(this.olmap.getView().getResolution())
+      // start the pan at the current center of the map
+      var pan = ol.animation.pan({
+        source: this.olmap.getView().getCenter()
+      })
+      this.olmap.beforeRender(bounce)
+      this.olmap.beforeRender(pan)
+      // when we set the center to the new location, the animated move will
+      // trigger the bounce and pan effects
+      this.olmap.getView().setCenter([-101.9497571, 38.9287866])
+
+      // alert(this.olmap.getView().getResolution())
+
+      var zoom = ol.animation.zoom({
+        resolution: this.olmap.getView().getResolution()
+      })
+      this.olmap.beforeRender(zoom)
+      // setting the resolution to a new value will smoothly zoom in or out
+      // depending on the factor
+      this.olmap.getView().setResolution(this.olmap.getView().getResolution() * 3)
+      // animation - end
     },
     data () {
       return {
@@ -107,4 +138,5 @@
       }
     }
   }
+
 </script>

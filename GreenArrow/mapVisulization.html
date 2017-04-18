@@ -23,103 +23,104 @@
         <!-- Add your site or application content here -->
         <p align = "center">Green Arrow</p>
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <!-- google maps - start -->
+        <div id="googlemaps">
+            <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+            <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+            <script src="js/plugins.js"></script>
+            <script src="js/main.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
-        <!-- Read Chicago.json -->
-        <p id="key" hidden>This paragraph should be hidden.</p>
-        <div id="mapVisualization">
-
-            <div id="map" style="width:100%;height:900px"></div>
+            <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
             <script>
-
-                //var chicagoData = require('/dataset/Chicago.json');
-                function myMap() {
-                    jQuery.get('dataset/Chicago.txt', function(txt) {
-                        //$('#output').text(txt);
-                        dataFile = new String(txt);
-
-                        var longitudes = new Array();
-                        var latitudes = new Array();
-                        // for (i = 0; i < dataFile.length;) {
-                        for (i = 0; i < 30000;) {
-                            var coordinates_i = dataFile.indexOf("coordinates", i);
-                            var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
-                            var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);
-                            var longitude = dataFile.substring(coordinates_i + 14, end_of_longitude_i);
-                            var latitude = dataFile.substring(end_of_longitude_i + 1, end_of_latitude_i);
-                            longitudes.push(longitude);
-                            latitudes.push(latitude);
-                            i = end_of_latitude_i + 1;
-                        }
-
-                        var mapCanvas = document.getElementById("map");
-                        //var myCenter = new google.maps.LatLng(51.508742,-0.120850);
-                        var pinColor = "006400";
-                        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-                            new google.maps.Size(70, 70),
-                            new google.maps.Point(0,0),
-                            new google.maps.Point(10, 34));
-                        var myCenter = new google.maps.LatLng(latitudes[0], longitudes[0]);
-                        var mapOptions = {center: myCenter, zoom: 10};
-                        var map = new google.maps.Map(mapCanvas,mapOptions);
-                        var markers = new Array();
-
-                        // add markers
-                        for (i = 0; i < longitudes.length; i++) {
-                            var myLocation = new google.maps.LatLng(latitudes[i], longitudes[i]);
-                            var marker = new google.maps.Marker({
-                                position: myLocation,
-                                animation: google.maps.Animation.BOUNCE,
-                                icon: pinImage
-                            });
-                            markers.push(marker);
-                        }
-
-                        displayMarkers(markers, pinImage, map, 0);
-                        deleteMarkers(markers, pinImage, map, 0);
-                    });
-
-                }
-
-                // display makers in every 500 ms
-                // reference : http://stackoverflow.com/questions/30865456/javascript-loop-through-array-with-delay
-                function displayMarkers(markers, pinImage, map, i) {
-                    if (i < markers.length){
-                        markers[i].setMap(map);
-                        setTimeout(function(){
-                            displayMarkers(markers, pinImage, map, i + 1);
-                        }, 500)
-                    }
-                }
-
-                function deleteMarkers(markers, pinImage, map, i) {
-                    if (i < markers.length){
-                        setTimeout(function(){
-                            markers[i].setMap(null);
-                            deleteMarkers(markers, pinImage, map, i + 1);
-                        }, 1500)
-                    }
-                }
-
+                (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+                e.src='https://www.google-analytics.com/analytics.js';
+                r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+                ga('create','UA-XXXXX-X','auto');ga('send','pageview');
             </script>
+            <!-- Read Chicago.json -->
+            <p id="key" hidden>This paragraph should be hidden.</p>
+            <div id="mapVisualization">
 
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7-cOqjBfEy-8bQi_8LenoAv8TyGalyNw&callback=myMap"></script>
+                <div id="map" style="width:100%;height:900px"></div>
+                <script>
 
-            <!--<script src=googleLink></script>-->
-        </div> <!-- end of <div id="mapVisualization"> -->
+                    //var chicagoData = require('/dataset/Chicago.json');
+                    function myMap() {
+                        jQuery.get('dataset/Chicago.txt', function(txt) {
+                            //$('#output').text(txt);
+                            dataFile = new String(txt);
 
+                            var longitudes = new Array();
+                            var latitudes = new Array();
+                            // for (i = 0; i < dataFile.length;) {
+                            for (i = 0; i < 30000;) {
+                                var coordinates_i = dataFile.indexOf("coordinates", i);
+                                var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
+                                var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);
+                                var longitude = dataFile.substring(coordinates_i + 14, end_of_longitude_i);
+                                var latitude = dataFile.substring(end_of_longitude_i + 1, end_of_latitude_i);
+                                longitudes.push(longitude);
+                                latitudes.push(latitude);
+                                i = end_of_latitude_i + 1;
+                            }
+
+                            var mapCanvas = document.getElementById("map");
+                            //var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+                            var pinColor = "006400";
+                            var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+                                new google.maps.Size(70, 70),
+                                new google.maps.Point(0,0),
+                                new google.maps.Point(10, 34));
+                            var myCenter = new google.maps.LatLng(latitudes[0], longitudes[0]);
+                            var mapOptions = {center: myCenter, zoom: 10};
+                            var map = new google.maps.Map(mapCanvas,mapOptions);
+                            var markers = new Array();
+
+                            // add markers
+                            for (i = 0; i < longitudes.length; i++) {
+                                var myLocation = new google.maps.LatLng(latitudes[i], longitudes[i]);
+                                var marker = new google.maps.Marker({
+                                    position: myLocation,
+                                    animation: google.maps.Animation.BOUNCE,
+                                    icon: pinImage
+                                });
+                                markers.push(marker);
+                            }
+
+                            displayMarkers(markers, pinImage, map, 0);
+                            deleteMarkers(markers, pinImage, map, 0);
+                        });
+
+                    }
+
+                    // display makers in every 500 ms
+                    // reference : http://stackoverflow.com/questions/30865456/javascript-loop-through-array-with-delay
+                    function displayMarkers(markers, pinImage, map, i) {
+                        if (i < markers.length){
+                            markers[i].setMap(map);
+                            setTimeout(function(){
+                                displayMarkers(markers, pinImage, map, i + 1);
+                            }, 500)
+                        }
+                    }
+
+                    function deleteMarkers(markers, pinImage, map, i) {
+                        if (i < markers.length){
+                            setTimeout(function(){
+                                markers[i].setMap(null);
+                                deleteMarkers(markers, pinImage, map, i + 1);
+                            }, 1500)
+                        }
+                    }
+
+                </script>
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7-cOqjBfEy-8bQi_8LenoAv8TyGalyNw&callback=myMap"></script>
+                <!--<script src=googleLink></script>-->
+            </div> <!-- end of <div id="mapVisualization"> -->
+        </div> <!-- end of <div id="googlemaps"> -->
         <!--<div id = "output"></div>-->
     </body>
 </html>

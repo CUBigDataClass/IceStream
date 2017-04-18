@@ -62,9 +62,7 @@
 
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="./chicago.html">Chicago</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Denver</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Detroit</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">NYC</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./detroit.html">Detroit</a></li>
                     </ul>
                 </div>
             </li>
@@ -122,7 +120,6 @@
                             <div id="map" style="width:100%;height:650px"></div>
                             <script>
 
-                                //var chicagoData = require('/dataset/Chicago.json');
                                 function myMap() {
                                     jQuery.get('dataset/Detroit.txt', function(txt) {
                                         //$('#output').text(txt);
@@ -176,14 +173,6 @@
                                 function addMarkerWithTimeout(map, marker, timeout) {
                                     window.setTimeout(function() {
                                         marker.setMap(map);
-                                    }, timeout);
-                                }
-
-                                // display cluster in every ? timeout
-                                function addClusterWithTimeout(map, markers, timeout) {
-                                    window.setTimeout(function() {
-                                        var markerCluster = new MarkerClusterer(map, markers,
-                                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
                                     }, timeout);
                                 }
 

@@ -74,8 +74,9 @@
                         var myCenter = new google.maps.LatLng(latitudes[0], longitudes[0]);
                         var mapOptions = {center: myCenter, zoom: 10};
                         var map = new google.maps.Map(mapCanvas,mapOptions);
+                        var markers = new Array();
 
-                        /* code before 20170417Mon
+                        // add markers
                         for (i = 0; i < longitudes.length; i++) {
                             var myLocation = new google.maps.LatLng(latitudes[i], longitudes[i]);
                             var marker = new google.maps.Marker({
@@ -83,32 +84,34 @@
                                 animation: google.maps.Animation.BOUNCE,
                                 icon: pinImage
                             });
-                            marker.setMap(map);
-                        }*/
+                            markers.push(marker);
+                        }
 
-                        displayMarkers(longitudes, latitudes, pinImage, map, 0);
-                        markers[markers.length-1].setMap(null);
+                        displayMarkers(markers, pinImage, map, 0);
+                        deleteMarkers(markers, pinImage, map, 0);
                     });
 
                 }
 
                 // display makers in every 500 ms
                 // reference : http://stackoverflow.com/questions/30865456/javascript-loop-through-array-with-delay
-                function displayMarkers(longitudes, latitudes, pinImage, map, i) {
-                    if (i < longitudes.length){
+                function displayMarkers(markers, pinImage, map, i) {
+                    if (i < markers.length){
+                        markers[i].setMap(map);
                         setTimeout(function(){
-                            var myLocation = new google.maps.LatLng(latitudes[i], longitudes[i]);
-                            var marker = new google.maps.Marker({
-                                position: myLocation,
-                                animation: google.maps.Animation.BOUNCE,
-                                icon: pinImage
-                            });
-                            marker.setMap(map);
-                            displayMarkers(longitudes, latitudes, pinImage, map, i + 1);
+                            displayMarkers(markers, pinImage, map, i + 1);
                         }, 500)
                     }
                 }
 
+                function deleteMarkers(markers, pinImage, map, i) {
+                    if (i < markers.length){
+                        setTimeout(function(){
+                            markers[i].setMap(null);
+                            deleteMarkers(markers, pinImage, map, i + 1);
+                        }, 1500)
+                    }
+                }
 
             </script>
 

@@ -2,65 +2,102 @@
   <div id="app">
   <v-app top-toolbar left-fixed-sidebar sidebar-under-toolbar>
 
-  <header>
+  <!--<header>-->
     <!--Navbar-->
     <div class="navbar">
-      <v-toolbar fixed class="green darken-1">
+      <v-toolbar fixed class="green darken-2">
         <v-toolbar-side-icon @click.native.stop="openSidebar()"></v-toolbar-side-icon>
         <v-toolbar-title ><h3>Green Arrow</h3></v-toolbar-title>
-        <v-toolbar-items>
-          <v-toolbar-item><router-link to="/">Home</router-link></v-toolbar-item>
-          <v-toolbar-item><a href="https://github.com/CUBigDataClass/IceStream">Github</a></v-toolbar-item>
-          <v-toolbar-item><router-link to="/login"><span class="glyphicon glyphicon-log-in"></span> Login</router-link></v-toolbar-item>
+
+        <v-toolbar-items ripple>
+          <v-toolbar-item ripple>
+            <router-link to="/">
+              Map
+            </router-link>
+          </v-toolbar-item>
+          <v-toolbar-item>
+            <router-link to="/Statistics">
+                Statistics
+            </router-link>
+          </v-toolbar-item>
+          <v-toolbar-item>
+            <a href="https://github.com/CUBigDataClass/IceStream">Github Repo</a>
+          </v-toolbar-item>
+          <v-toolbar-item>
+            <router-link to="/login">
+              <span class="glyphicon glyphicon-log-in"></span>
+                Login
+            </router-link>
+          </v-toolbar-item>
         </v-toolbar-items>
       </v-toolbar>
     </div>
-  </header>
+  <!--</header>-->
 
   <!--sidebar-->
   <div class="flosidebar">
-    <v-sidebar fixed class="grey darken-2 white--text" v-model="sidebar">
+    <v-sidebar fixed class="darken-2 white--text" v-model="sidebar">
       <!--title-->
       <div class="px-4">
         <h3 class="mt-3">FILTERS</h3>
       </div>
       <v-divider></v-divider>
 
-      <!--city-->
+      <!--city - try this transition next time-->
+      <div class="city2">
+        <v-menu transition="v-scale-transition">
+          <v-btn success slot="activator">Select City</v-btn>
+          <v-list>
+              <v-list-item v-for="n in 5" :key="n">
+                <v-list-tile>
+                  <v-list-tile-title v-text="'Item ' + n" class="green--text"/>
+                </v-list-tile>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div><!-- end of div class="city2" -->
+
       <div class="city">
         <h4>City</h4>
-        <hr />
+        <hr/>
         <!--select button-->
         <div class="select type">
-          <select class="grey black--text" v-model="selected">
+          <select class="white black--text" v-model="selected">
             <option disabled value="">Please select a city</option>
             <optgroup label="IL">
-              <option>Chicago</option>
+              <option value="Chicago">Chicago</option>
             </optgroup>
             <optgroup label="CO">
-              <option>Denver</option>
+              <option value="Denver">Denver</option>
             </optgroup>
             <optgroup label="WA">
-              <option>Seattle</option>
+              <option value="Seattle">Seattle</option>
             </optgroup>
           </select>
         </div>
-      </div>
-        <v-divider></v-divider>
+      </div> <!-- end of div class="city" -->
+      <v-divider></v-divider>
+      <template v-if="this.selected == ''">
+        <button title="Please select a city!" disabled class="btn btn-primary green">submit</button>
+      </template>
+      <template v-else>
+        <button @click="submitButton" class="btn btn-primary green">submit</button>
+      </template>
+      <v-divider></v-divider>
 
-        <!--date-->
+      <!--date-->
       <div class="date-select">
         <h4>Date</h4>
         <hr />
         <!--datepicker-->
         <h5>From</h5>
-        <datepicker class="grey black--text" v-model="start"></datepicker>
+        <datepicker class="white black--text" v-model="start"></datepicker>
         <h5>To</h5>
-        <datepicker class="grey black--text" v-model="end"></datepicker>
-      </div>
+        <datepicker class="white black--text" v-model="end"></datepicker>
+      </div><!-- end of div class="date-select" -->
       <v-divider></v-divider>
 
-        <!--crime type-->
+      <!--crime type-->
       <div class="crimetype">
         <h4>Crime Type</h4>
         <hr />
@@ -73,11 +110,11 @@
         <label for="crimetype3">crimetype3</label>
         <input type="checkbox" id="crimetype4" value="crimetype4" v-model="crimetype">
         <label for="crimetype4">crimetype4</label>
-      </div>
+      </div><!-- end of div class="crimetype" -->
     </v-sidebar>
   </div>
 
-    <!--content-->
+  <!--content-->
   <div class="content">
     <v-content class="pt-0">
         <transition mode="out-in">
@@ -86,13 +123,17 @@
     </v-content>
   </div>
 
-</v-app> 
+</v-app>
 </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import datepicker from 'vue-date'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
+Vue.use(VueAxios, axios)
 export default {
   name: 'app',
   components: { datepicker },
@@ -100,13 +141,31 @@ export default {
     return {
       sidebar: false,
       checkedNames: [],
-      start: '2017-03-15',
-      end: '2017-03-16'
+      start: '',
+      end: '',
+      selected: '',
+      crimetype: []
     }
   },
   methods: {
     openSidebar () {
       this.sidebar = !this.sidebar
+    },
+    submitButton: function () {
+      axios.get('/api/', {
+        params: {
+          City: this.selected,
+          Crimetype: this.crimetype,
+          Starttime: this.start,
+          Endtime: this.end
+        }
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }
@@ -127,7 +186,14 @@ a {
 
 .navbar {
     margin:0;
+    height:64px;
 }
+
+.navbar a {
+ height: 36px;
+}
+
+
 
 .content {
     word-wrap: break-word;
@@ -166,4 +232,21 @@ a {
 .datepicker {
     padding-left:5%;
 }
+
+.flosidebar button {
+  margin-left: 5%;
+}
+
+.flosidebar {
+  margin:0;
+}
+
+.content {
+  margin: 0;
+}
+
+.navbar a {
+  text-align: center;
+}
+
 </style>

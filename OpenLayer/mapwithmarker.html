@@ -19,9 +19,9 @@
 
     var positions = [
        [ -118.3764, 34.0426 ],
-       [  -118.2707, 34.0611 ],
+       [ -118.2707, 34.0611 ],
     ];
-    
+
     var markers = new OpenLayers.Layer.Markers( "Markers");
     map.addLayer(markers);
 
@@ -35,7 +35,7 @@
         var icon = new OpenLayers.Icon('http://www.clker.com/cliparts/y/b/j/m/C/x/map-marker-md.png', size, offset);
         markers.addMarker(new OpenLayers.Marker(position, icon));
     }
-    
+
 
     map.setCenter(position, zoom);
 </script>

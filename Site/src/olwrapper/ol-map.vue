@@ -9,7 +9,7 @@
   #themap {
     width:100%;
     height:100%;
-    margin:0px;
+    margin: 0px;
     padding: 0px;
   }
 </style>
@@ -23,7 +23,7 @@
       center: {
         type: Array,
         default: () => {
-          return [-38.5431, -3.71722]
+          return [-101.9497571, 38.9287866]
         }
       }
     },
@@ -37,8 +37,8 @@
           })
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([-38.5431, -3.71722]),
-          zoom: 18
+          center: ol.proj.fromLonLat([-101.9497571, 38.9287866]),
+          zoom: 2
         })
       })
       // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
@@ -64,6 +64,15 @@
           this.$emit('selfeature', feature)
         }
       })
+
+      // animation - start
+      // http://openlayers.org/en/latest/examples/animation.html
+      this.olmap.getView().animate({
+        center: ol.proj.fromLonLat([-101.9497571, 38.9287866]),
+        duration: 2000,
+        zoom: this.olmap.getView().getZoom() + 3
+      })
+      // animation - end
     },
     data () {
       return {
@@ -107,4 +116,5 @@
       }
     }
   }
+
 </script>

@@ -169,7 +169,12 @@
     <!-- /#page-content-wrapper -->
     <div id="page-content-wrapper">
         <div id="tooltip-container" class="container-fluid"></div>
-
+        <center>
+            <h3>Crime in the United States
+                <span class="label label-default">by State, 2015</span>
+            </h3>
+            <a href="https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-5"> Data Source </a>
+        </center>
         <div id="canvas-svg"></div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -182,7 +187,7 @@
 
                 var config = {"color1":"#E0EEE0","color2":"#006400","stateDataColumn":"state_and_district_of_columbia","valueDataColumn":"violent_crime_rate"}
 
-                var WIDTH = 1000, HEIGHT = 700;
+                var WIDTH = 1000, HEIGHT = 550;
 
                 var COLOR_COUNTS = 10;
 
@@ -492,11 +497,6 @@
         </script>
     </div>
 
-    <div align="center">
-        <p>
-            <a href="https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-5"> Data Source </a>
-        </p>
-    </div>
 </div>
     <!-- /#wrapper -->
 

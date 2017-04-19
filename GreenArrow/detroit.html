@@ -115,53 +115,7 @@
                             <div id="map" style="width:100%;height:650px"></div>
                             <script>
 
-                                //var chicagoData = require('/dataset/Chicago.json');
                                 function myMap() {
-                                    jQuery.get('dataset/Chicago.txt', function(txt) {
-                                        //$('#output').text(txt);
-                                        dataFile = new String(txt);
-
-                                        // construct map
-                                        var mapCanvas = document.getElementById("map");
-                                        //var myCenter = new google.maps.LatLng(51.508742,-0.120850);
-                                        var pinColor = "33cc66";
-                                        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-                                            new google.maps.Size(70, 70),
-                                            new google.maps.Point(0,0),
-                                            new google.maps.Point(10, 34));
-                                        var myCenter = new google.maps.LatLng(40.929317, -98.420054); // center of usa
-                                        var mapOptions = {center: myCenter, zoom: 4};
-                                        var map = new google.maps.Map(mapCanvas,mapOptions);
-                                        var markers = new Array();
-                                        // end of constructing map
-
-                                        // for (i = 0; i < dataFile.length;) {
-                                        // alert(dataFile.length)
-                                        var marker_i = 0;
-                                        for (i = 0; i < 800000;) {
-                                            var coordinates_i = dataFile.indexOf("coordinates", i);
-                                            var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
-                                            var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);
-                                            var longitude = dataFile.substring(coordinates_i + 14, end_of_longitude_i);
-                                            var latitude = dataFile.substring(end_of_longitude_i + 1, end_of_latitude_i);
-
-                                            // add markers into markers array
-                                            var myLocation = new google.maps.LatLng(latitude, longitude);
-                                            var marker = new google.maps.Marker({
-                                                position: myLocation,
-                                                animation: google.maps.Animation.DROP,
-                                                icon: pinImage
-                                            });
-                                            markers.push(marker);
-                                            i = end_of_latitude_i + 1;
-                                        }
-
-                                        var markerCluster = new MarkerClusterer(map, markers,
-                                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-
-
-                                    });
-
                                     jQuery.get('dataset/Detroit.txt', function(txt) {
                                         //$('#output').text(txt);
                                         dataFile = new String(txt);
@@ -174,8 +128,8 @@
                                             new google.maps.Size(70, 70),
                                             new google.maps.Point(0,0),
                                             new google.maps.Point(10, 34));
-                                        var myCenter = new google.maps.LatLng(39.695009, -97.117887); // center of detroit
-                                        var mapOptions = {center: myCenter, zoom: 4};
+                                        var myCenter = new google.maps.LatLng(42.381543,-83.0787427); // center of detroit
+                                        var mapOptions = {center: myCenter, zoom: 10};
                                         var map = new google.maps.Map(mapCanvas,mapOptions);
                                         var markers = new Array();
                                         // end of constructing map

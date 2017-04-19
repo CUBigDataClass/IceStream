@@ -1,1 +1,1 @@
-Open "GreenArrow" project with Webstorm and run "mapVisulization.html"
+Open "GreenArrow" project with Webstorm and run "index.html"

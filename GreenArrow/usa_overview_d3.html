@@ -97,13 +97,13 @@
 
     d3.csv("usa_crime_overview.csv", function(err, data) {
 
-        var config = {"color1":"#c3e2ff","color2":"#08306B","mainCategory":"Washington","averageCategory":"Nation Average","stateDataColumn":"state_and_district_of_columbia","valueDataColumn":"violent_crime_rate"}
+        var config = {"color1":"#E0EEE0","color2":"#006400","stateDataColumn":"state_and_district_of_columbia","valueDataColumn":"violent_crime_rate"}
 
-        var WIDTH = 1600, HEIGHT = 700;
+        var WIDTH = 1700, HEIGHT = 700;
 
-        var COLOR_COUNTS = 20;
+        var COLOR_COUNTS = 10;
 
-        var SCALE = 1.1;
+        var SCALE = 1.2;
 
         var MAIN_CATEGORY = config.mainCategory;
         var AVG_CATEGORY = config.averageCategory;
@@ -206,7 +206,7 @@
                     name_values = [],
                     values = [],
                     chart,
-                    width = 400,
+                    width = 800,
                     bar_height = 20,
                     height = (bar_height + 2 * gap) * names.length;
 

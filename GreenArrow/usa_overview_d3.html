@@ -1,92 +1,88 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<!-- source: https://vida.io/gists/qPjGZMi5dCiPrR8zD -->
-<style>
-
-    body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        width: 960px;
-        height: 500px;
-        position: relative;
-    }
-
-    /* stylesheet for your custom graph */
-
-    .categories {
-        fill: none;
-        stroke: #fff;
-        stroke-linejoin: round;
-    }
-
-    .categories-choropleth {
-        fill: #ccc;
-    }
-
-    #tooltip-container {
-        position: absolute;
-        background-color: #fff;
-        color: #000;
-        padding: 10px;
-        border: 1px solid;
-        display: none;
-    }
-
-    #canvas svg {
-        border: 0px;
-    }
-
-    .tooltip_key {
-        font-weight: bold;
-    }
-
-    .tooltip_value {
-        margin-left: 20px;
-        float: right;
-    }
-
-    .x-axis {
-        fill: #000;
-    }
-
-    .chart {
-        background: #fff;
-        margin: 5px;
-    }
-
-    .chart .category-bar {
-        stroke: white;
-        fill: steelblue;
-    }
-
-    .chart .score {
-        fill: white;
-    }
-
-    .chart text.name {
-        fill: #000;
-    }
-
-    .chart line {
-        stroke: #c1c1c1;
-    }
-
-    .chart .rule {
-        fill: #000;
-    }
-
-    .main-category-text {
-        fill: #FF4A4A;
-    }
-
-    .main-category-bar {
-        stroke: #FF4A4A;
-        stroke-width: 2px;
-    }
-
-</style>
-
 <head>
+    <meta charset="utf-8">
+    <!-- source: https://vida.io/gists/qPjGZMi5dCiPrR8zD -->
+    <style>
 
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            position: relative;
+        }
+
+        /* stylesheet for your custom graph */
+
+        .categories {
+            fill: none;
+            stroke: #fff;
+            stroke-linejoin: round;
+        }
+
+        .categories-choropleth {
+            fill: #ccc;
+        }
+
+        #tooltip-container {
+            position: absolute;
+            background-color: #fff;
+            color: #000;
+            padding: 10px;
+            border: 1px solid;
+            display: none;
+        }
+
+        #canvas svg {
+            border: 0px;
+        }
+
+        .tooltip_key {
+            font-weight: bold;
+        }
+
+        .tooltip_value {
+            margin-left: 20px;
+            float: right;
+        }
+
+        .x-axis {
+            fill: #000;
+        }
+
+        .chart {
+            background: #fff;
+            margin: 5px;
+        }
+
+        .chart .category-bar {
+            stroke: white;
+            fill: steelblue;
+        }
+
+        .chart .score {
+            fill: white;
+        }
+
+        .chart text.name {
+            fill: #000;
+        }
+
+        .chart line {
+            stroke: #c1c1c1;
+        }
+
+        .chart .rule {
+            fill: #000;
+        }
+
+        .main-category-text {
+            fill: #FF4A4A;
+        }
+
+        .main-category-bar {
+            stroke: #FF4A4A;
+            stroke-width: 2px;
+        }
+
+    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
@@ -173,16 +169,9 @@
     </div>
     <!-- /#navbar wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-
-
-        </div>
-    </div>
     <!-- /#page-content-wrapper -->
-    <div id="usa_over_view_d3_2015">
-        <div id="tooltip-container"></div>
+    <div id="page-content-wrapper">
+        <div id="tooltip-container" class="container-fluid"></div>
 
         <div id="canvas-svg"></div>
 

@@ -16,7 +16,7 @@
             </router-link>
           </v-toolbar-item>
           <v-toolbar-item>
-            <router-link to="/login">
+            <router-link to="/Statistics">
                 Statistics
             </router-link>
           </v-toolbar-item>

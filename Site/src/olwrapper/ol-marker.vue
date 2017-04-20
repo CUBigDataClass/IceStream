@@ -56,7 +56,7 @@
         this.style = new ol.style.Style({
           image: new ol.style.Circle({
             radius: 10,
-            snapToPixel: false,
+            snapToPixel: true,
             fill: new ol.style.Fill({color: 'green'}),
             stroke: new ol.style.Stroke({
               color: 'white', width: 3

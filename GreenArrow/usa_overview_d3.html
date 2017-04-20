@@ -166,8 +166,8 @@
     </div>
     <!-- /#navbar wrapper -->
 
-    <!-- /#page-content-wrapper -->
-    <div id="page-content-wrapper">
+    <!-- #page-content-wrapper -->
+    <div id="page-content-wrapper" align="center">
         <div id="tooltip-container" class="container-fluid"></div>
         <div id="title" align="center">
             <h3>Crime in the United States
@@ -495,7 +495,15 @@
             });
 
         </script>
+
+        <!-- #scrollUp -->
+        <div id="scrollUp">
+            <br/><br/>
+            <a href="#top"><button id="top" class="btn btn-success">Back to top</button></a>
+        </div>
+        <!-- /#scrollUp -->
     </div>
+    <!-- #page-content-wrapper -->
 
 </div>
     <!-- /#wrapper -->
@@ -511,6 +519,14 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+    <!-- scroll up Script -->
+    <script>
+        $("a[href='#top']").click(function() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
         });
     </script>
 

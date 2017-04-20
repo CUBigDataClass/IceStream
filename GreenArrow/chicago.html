@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,13 +43,10 @@
                 <a href="#">Dashboard</a>
             </li>
             <li>
-                <a href="#">D3</a>
+                <a href="./usa_overview_d3.html">D3</a>
             </li>
             <li>
                 <a href="https://github.com/CUBigDataClass/IceStream">Github</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
             </li>
             <li>
                 <a href="#">Contact</a>
@@ -62,9 +58,7 @@
 
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="./chicago.html">Chicago</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Denver</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Detroit</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">NYC</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./detroit.html">Detroit</a></li>
                     </ul>
                 </div>
             </li>
@@ -97,8 +91,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3> </h3>
-
                     <!-- google maps - start -->
                     <div id="googlemaps">
                         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -176,14 +168,6 @@
                                 function addMarkerWithTimeout(map, marker, timeout) {
                                     window.setTimeout(function() {
                                         marker.setMap(map);
-                                    }, timeout);
-                                }
-
-                                // display cluster in every ? timeout
-                                function addClusterWithTimeout(map, markers, timeout) {
-                                    window.setTimeout(function() {
-                                        var markerCluster = new MarkerClusterer(map, markers,
-                                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
                                     }, timeout);
                                 }
 

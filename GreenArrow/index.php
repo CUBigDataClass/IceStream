@@ -35,56 +35,15 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li>
-                <a href="./index.php">Maps</a>
-            </li>
-            <li>
-                <a href="#">Dashboard</a>
-            </li>
-            <li>
-                <a href="./usa_overview_d3.php">D3</a>
-            </li>
-            <li>
-                <a href="https://github.com/CUBigDataClass/IceStream">Github</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-basic dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Cities
-                        <span class="caret"></span></button>
-
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./chicago.php">Chicago</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./detroit.php">Detroit</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <?php
+        include './php/navbar/sidebar.php';
+    ?>
     <!-- /#sidebar-wrapper -->
 
     <!-- #navbar wrapper -->
-    <div id="navbar wrapper">
-        <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-
-                        <a href="#menu-toggle" class="navbar-brand active" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav pull-right">
-                    <li class="nav-item ">
-                        <a class="navbar-brand active" href="#">Green Arrow</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <?php
+        include './php/navbar/topnavbar.php';
+    ?>
     <!-- /#navbar wrapper -->
 
     <!-- Page Content -->

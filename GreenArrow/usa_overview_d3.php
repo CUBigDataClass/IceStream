@@ -143,7 +143,7 @@
 
         <script>
 
-            d3.csv("usa_crime_overview.csv", function(err, data) {
+            d3.csv("./dataset/usa_crime_overview.csv", function(err, data) {
 
                 var config = {"color1":"#E0EEE0","color2":"#006400","stateDataColumn":"state_and_district_of_columbia","valueDataColumn":"violent_crime_rate"}
 

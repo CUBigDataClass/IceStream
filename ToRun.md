@@ -15,7 +15,7 @@ cd to the kafka directory
 start the zookeeper server
 ```
 bin/zookeeper-server-start.sh config/zookeeper.properties
-``
+```
 
 start the kafka server
 ```

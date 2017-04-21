@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <!-- source: https://vida.io/gists/qPjGZMi5dCiPrR8zD -->
+    <!-- source: https://vida.io/gists/qPjGZMi5dCiPrR8zD
+    https://gist.github.com/dnprock/5215cc464cfb9affd283 -->
     <style>
 
         body {
@@ -114,67 +115,26 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li>
-                <a href="./index.html">Maps</a>
-            </li>
-            <li>
-                <a href="#">Dashboard</a>
-            </li>
-            <li>
-                <a href="./usa_overview_d3.html">D3</a>
-            </li>
-            <li>
-                <a href="https://github.com/CUBigDataClass/IceStream">Github</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-basic dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Cities
-                        <span class="caret"></span></button>
-
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./chicago.html">Chicago</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./detroit.html">Detroit</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <?php
+    include './php/navbar/sidebar.php';
+    ?>
     <!-- /#sidebar-wrapper -->
 
     <!-- #navbar wrapper -->
-    <div id="navbar wrapper">
-        <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-
-                        <a href="#menu-toggle" class="navbar-brand active" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav pull-right">
-                    <li class="nav-item ">
-                        <a class="navbar-brand active" href="#">Green Arrow</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <?php
+    include './php/navbar/topnavbar.php';
+    ?>
     <!-- /#navbar wrapper -->
 
-    <!-- /#page-content-wrapper -->
-    <div id="page-content-wrapper">
+    <!-- #page-content-wrapper -->
+    <div id="page-content-wrapper" align="center">
         <div id="tooltip-container" class="container-fluid"></div>
-        <center>
+        <div id="title" align="center">
             <h3>Crime in the United States
                 <span class="label label-default">by State, 2015</span>
             </h3>
             <a href="https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-5"> Data Source </a>
-        </center>
+        </div>
         <div id="canvas-svg"></div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -183,7 +143,7 @@
 
         <script>
 
-            d3.csv("usa_crime_overview.csv", function(err, data) {
+            d3.csv("./dataset/usa_crime_overview.csv", function(err, data) {
 
                 var config = {"color1":"#E0EEE0","color2":"#006400","stateDataColumn":"state_and_district_of_columbia","valueDataColumn":"violent_crime_rate"}
 
@@ -495,7 +455,15 @@
             });
 
         </script>
+
+        <!-- #scrollUp -->
+        <div id="scrollUp">
+            <br/><br/>
+            <a href="#top"><button id="top" class="btn btn-success">Back to top</button></a>
+        </div>
+        <!-- /#scrollUp -->
     </div>
+    <!-- #page-content-wrapper -->
 
 </div>
     <!-- /#wrapper -->
@@ -511,6 +479,14 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+    <!-- scroll up Script -->
+    <script>
+        $("a[href='#top']").click(function() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
         });
     </script>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,61 +35,28 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li>
-                <a href="./index.html">Maps</a>
-            </li>
-            <li>
-                <a href="#">Dashboard</a>
-            </li>
-            <li>
-                <a href="./usa_overview_d3.html">D3</a>
-            </li>
-            <li>
-                <a href="https://github.com/CUBigDataClass/IceStream">Github</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-basic dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Cities
-                        <span class="caret"></span></button>
-
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./chicago.html">Chicago</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./detroit.html">Detroit</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <?php
+    include './php/navbar/sidebar.php';
+    ?>
     <!-- /#sidebar-wrapper -->
 
     <!-- #navbar wrapper -->
-    <div id="navbar wrapper">
-        <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-
-                        <a href="#menu-toggle" class="navbar-brand active" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav pull-right">
-                    <li class="nav-item ">
-                        <a class="navbar-brand active" href="#">Green Arrow</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <?php
+    include './php/navbar/topnavbar.php';
+    ?>
     <!-- /#navbar wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">
+            <div id="title" align="center">
+                <h3>Crime in Chicago
+                    <span class="label label-default">2009 to present</span>
+                </h3>
+                <a href="https://data.detroitmi.gov/Public-Safety/DPD-All-Crime-Incidents-2009-Present-Data-Lens-Pro/bzdg-syqn"> Data Source </a>
+                <!-- http://us-city.census.okfn.org/dataset/crime-stats -->
+                <br/><br/>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <!-- google maps - start -->
@@ -114,9 +82,8 @@
                             <div id="map" style="width:100%;height:650px"></div>
                             <script>
 
-                                //var chicagoData = require('/dataset/Chicago.json');
                                 function myMap() {
-                                    jQuery.get('dataset/Chicago.txt', function(txt) {
+                                    jQuery.get('dataset/Detroit.txt', function(txt) {
                                         //$('#output').text(txt);
                                         dataFile = new String(txt);
 
@@ -128,7 +95,7 @@
                                             new google.maps.Size(70, 70),
                                             new google.maps.Point(0,0),
                                             new google.maps.Point(10, 34));
-                                        var myCenter = new google.maps.LatLng(41.839532,-87.6588477); // center of chicago
+                                        var myCenter = new google.maps.LatLng(42.381543,-83.0787427); // center of detroit
                                         var mapOptions = {center: myCenter, zoom: 10};
                                         var map = new google.maps.Map(mapCanvas,mapOptions);
                                         var markers = new Array();
@@ -137,7 +104,7 @@
                                         // for (i = 0; i < dataFile.length;) {
                                         // alert(dataFile.length)
                                         var marker_i = 0;
-                                        for (i = 0; i < 800000;) {
+                                        for (i = 0; i < 700000;) {
                                             var coordinates_i = dataFile.indexOf("coordinates", i);
                                             var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
                                             var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);

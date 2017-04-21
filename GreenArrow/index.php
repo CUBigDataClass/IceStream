@@ -35,56 +35,15 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li>
-                <a href="./index.html">Maps</a>
-            </li>
-            <li>
-                <a href="#">Dashboard</a>
-            </li>
-            <li>
-                <a href="./usa_overview_d3.html">D3</a>
-            </li>
-            <li>
-                <a href="https://github.com/CUBigDataClass/IceStream">Github</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-basic dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Cities
-                        <span class="caret"></span></button>
-
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./chicago.html">Chicago</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="./detroit.html">Detroit</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <?php
+        include './php/navbar/sidebar.php';
+    ?>
     <!-- /#sidebar-wrapper -->
 
     <!-- #navbar wrapper -->
-    <div id="navbar wrapper">
-        <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-
-                        <a href="#menu-toggle" class="navbar-brand active" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav pull-right">
-                    <li class="nav-item ">
-                        <a class="navbar-brand active" href="#">Green Arrow</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <?php
+        include './php/navbar/topnavbar.php';
+    ?>
     <!-- /#navbar wrapper -->
 
     <!-- Page Content -->
@@ -115,7 +74,53 @@
                             <div id="map" style="width:100%;height:650px"></div>
                             <script>
 
+                                //var chicagoData = require('/dataset/Chicago.json');
                                 function myMap() {
+                                    jQuery.get('dataset/Chicago.txt', function(txt) {
+                                        //$('#output').text(txt);
+                                        dataFile = new String(txt);
+
+                                        // construct map
+                                        var mapCanvas = document.getElementById("map");
+                                        //var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+                                        var pinColor = "33cc66";
+                                        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+                                            new google.maps.Size(70, 70),
+                                            new google.maps.Point(0,0),
+                                            new google.maps.Point(10, 34));
+                                        var myCenter = new google.maps.LatLng(40.929317, -98.420054); // center of usa
+                                        var mapOptions = {center: myCenter, zoom: 4};
+                                        var map = new google.maps.Map(mapCanvas,mapOptions);
+                                        var markers = new Array();
+                                        // end of constructing map
+
+                                        // for (i = 0; i < dataFile.length;) {
+                                        // alert(dataFile.length)
+                                        var marker_i = 0;
+                                        for (i = 0; i < 800000;) {
+                                            var coordinates_i = dataFile.indexOf("coordinates", i);
+                                            var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
+                                            var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);
+                                            var longitude = dataFile.substring(coordinates_i + 14, end_of_longitude_i);
+                                            var latitude = dataFile.substring(end_of_longitude_i + 1, end_of_latitude_i);
+
+                                            // add markers into markers array
+                                            var myLocation = new google.maps.LatLng(latitude, longitude);
+                                            var marker = new google.maps.Marker({
+                                                position: myLocation,
+                                                animation: google.maps.Animation.DROP,
+                                                icon: pinImage
+                                            });
+                                            markers.push(marker);
+                                            i = end_of_latitude_i + 1;
+                                        }
+
+                                        var markerCluster = new MarkerClusterer(map, markers,
+                                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+
+                                    });
+
                                     jQuery.get('dataset/Detroit.txt', function(txt) {
                                         //$('#output').text(txt);
                                         dataFile = new String(txt);
@@ -128,8 +133,8 @@
                                             new google.maps.Size(70, 70),
                                             new google.maps.Point(0,0),
                                             new google.maps.Point(10, 34));
-                                        var myCenter = new google.maps.LatLng(42.381543,-83.0787427); // center of detroit
-                                        var mapOptions = {center: myCenter, zoom: 10};
+                                        var myCenter = new google.maps.LatLng(39.695009, -97.117887); // center of detroit
+                                        var mapOptions = {center: myCenter, zoom: 4};
                                         var map = new google.maps.Map(mapCanvas,mapOptions);
                                         var markers = new Array();
                                         // end of constructing map

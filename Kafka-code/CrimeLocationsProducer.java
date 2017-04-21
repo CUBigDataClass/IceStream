@@ -1,5 +1,6 @@
 package com;
 
+import java.util.Iterator;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -20,19 +21,30 @@ public class CrimeLocationsProducer {
 
 		KafkaProducer<String,String> producer = new KafkaProducer<String,String>(props);
 		
-		boolean sync = false;
+		// boolean sync = false;
 		String topic="crimelocations";
-		String key = "mykey";
-		String value = "testing crimelocations!!";
-		ProducerRecord<String,String> producerRecord = new ProducerRecord<String,String>(topic, key, value);
-		while (true) {
-			if (sync) {
-				producer.send(producerRecord).get();
-			} else {
+		
+		DatasetURLStreamReader dusr = new DatasetURLStreamReader("https://data.cityofchicago.org/resource/crimes.json");
+		Iterator<String> it = dusr.lines.iterator();
+		StringBuilder valueSB = null;
+		while (it.hasNext()) {
+			String line = it.next();
+			// System.out.println(line);
+			//producer.send(producerRecord).get();
+			if (line.contains("latitude")) {
+				int i0 = line.indexOf("\""), i1 = line.indexOf("\"", i0 + 1), 
+						i2 = line.indexOf("\"", i1 + 1), i3 = line.indexOf("\"", i2 + 1);
+				valueSB = new StringBuilder(line.substring(i2 + 1, i3));
+			} else if (line.contains("longitude") && valueSB.length() >0){
+				int i0 = line.indexOf("\""), i1 = line.indexOf("\"", i0 + 1), 
+						i2 = line.indexOf("\"", i1 + 1), i3 = line.indexOf("\"", i2 + 1);
+				valueSB.append(",").append(line.substring(i2 + 1, i3));
+				ProducerRecord<String,String> producerRecord = new ProducerRecord<String,String>(topic, valueSB.toString());
 				producer.send(producerRecord);
+				valueSB = new StringBuilder();
 			}
 		}
 
-		// producer.close();
+		producer.close();
 	}
 }

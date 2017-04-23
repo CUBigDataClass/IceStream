@@ -28,7 +28,13 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="./js/hashmap.js"></script>
+    <script src="./js/jquery.csv.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <link href="http://code.jquery.com/ui/1.9.0/themes/cupertino/jquery-ui.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <script></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 
@@ -51,95 +57,208 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">
+
+            <div id="title" align="center">
+                <h3>Crime in the United States
+                    <span class="label label-default">by State, 2015</span>
+                </h3>
+                <a href="https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-5"> Data Source </a>
+                <br/><br/><br/>
+            </div>
+
             <div class="row">
                 <div class="col-lg-12">
 
-                    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-                    <!-- dashboard - start -->
-                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
                     <!-- dashboard -->
-                    <div id="calendar">
+                    <div id="dashboard" align="center">
                         <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart', 'controls']});
-                            google.charts.setOnLoadCallback(drawStuff);
 
-                            function drawStuff() {
+                            jQuery.get('dataset/table_5_crime_in_the_united_states_by_state_2015.csv', function(data) {
+                                dataStr = new String(data);
 
-                                var dashboard = new google.visualization.Dashboard(
-                                    document.getElementById('programmatic_dashboard_div'));
+                                // save all data into "arr"
+                                var arr = new Array(53);
+                                var dataLines = dataStr.split("\n");
+                                for (i = 0; i < 53; i++) {
+                                    arr[i] = dataLines[i].split(",");
+                                }
 
-                                // We omit "var" so that programmaticSlider is visible to changeRange.
-                                var programmaticSlider = new google.visualization.ControlWrapper({
-                                    'controlType': 'NumberRangeFilter',
-                                    'containerId': 'programmatic_control_div',
-                                    'options': {
-                                        'filterColumnLabel': 'Donuts eaten',
-                                        'ui': {'labelStacking': 'vertical'}
+                                // draw google chart
+                                google.charts.load('current', {'packages':['corechart', 'controls']});
+                                google.charts.setOnLoadCallback(drawStuff);
+
+                                function drawStuff() {
+
+                                    var dashboard = new google.visualization.Dashboard(
+                                        document.getElementById('programmatic_dashboard_div'));
+
+                                    // We omit "var" so that programmaticSlider is visible to changeRange.
+                                    var programmaticSlider = new google.visualization.ControlWrapper({
+                                        'controlType': 'NumberRangeFilter',
+                                        'containerId': 'programmatic_control_div',
+                                        'options': {
+                                            'filterColumnLabel': 'Polulation',
+                                            'ui': {'labelStacking': 'vertical'}
+                                        }
+                                    });
+
+                                    var programmaticChart  = new google.visualization.ChartWrapper({
+                                        'chartType': 'PieChart',
+                                        'containerId': 'programmatic_chart_div',
+                                        'options': {
+                                            'width': 900,
+                                            'height': 550,
+                                            'legend': 'none',
+                                            'chartArea': {'left': 15, 'top': 15, 'right': 15, 'bottom': 0},
+                                            'pieSliceText': 'value'
+                                        }
+                                    });
+
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Name', 'Polulation'],
+                                        [arr[1][0], parseInt(arr[1][1])],
+                                        [arr[2][0], parseInt(arr[2][1])],
+                                        [arr[3][0], parseInt(arr[3][1])],
+                                        [arr[4][0], parseInt(arr[4][1])],
+                                        [arr[5][0], parseInt(arr[5][1])],
+                                        [arr[6][0], parseInt(arr[6][1])],
+                                        [arr[7][0], parseInt(arr[7][1])],
+                                        [arr[8][0], parseInt(arr[8][1])],
+                                        [arr[9][0], parseInt(arr[9][1])],
+                                        [arr[10][0], parseInt(arr[10][1])],
+                                        [arr[11][0], parseInt(arr[11][1])],
+                                        [arr[12][0], parseInt(arr[12][1])],
+                                        [arr[13][0], parseInt(arr[13][1])],
+                                        [arr[14][0], parseInt(arr[14][1])],
+                                        [arr[15][0], parseInt(arr[15][1])],
+                                        [arr[16][0], parseInt(arr[16][1])],
+                                        [arr[17][0], parseInt(arr[17][1])],
+                                        [arr[18][0], parseInt(arr[18][1])],
+                                        [arr[19][0], parseInt(arr[19][1])],
+                                        [arr[20][0], parseInt(arr[20][1])],
+                                        [arr[21][0], parseInt(arr[21][1])],
+                                        [arr[22][0], parseInt(arr[22][1])],
+                                        [arr[23][0], parseInt(arr[23][1])],
+                                        [arr[24][0], parseInt(arr[24][1])],
+                                        [arr[25][0], parseInt(arr[25][1])],
+                                        [arr[26][0], parseInt(arr[26][1])],
+                                        [arr[27][0], parseInt(arr[27][1])],
+                                        [arr[28][0], parseInt(arr[28][1])],
+                                        [arr[29][0], parseInt(arr[29][1])],
+                                        [arr[30][0], parseInt(arr[30][1])],
+                                        [arr[31][0], parseInt(arr[31][1])],
+                                        [arr[32][0], parseInt(arr[32][1])],
+                                        [arr[33][0], parseInt(arr[33][1])],
+                                        [arr[34][0], parseInt(arr[34][1])],
+                                        [arr[35][0], parseInt(arr[35][1])],
+                                        [arr[36][0], parseInt(arr[36][1])],
+                                        [arr[37][0], parseInt(arr[37][1])],
+                                        [arr[38][0], parseInt(arr[38][1])],
+                                        [arr[39][0], parseInt(arr[39][1])],
+                                        [arr[40][0], parseInt(arr[40][1])],
+                                        [arr[41][0], parseInt(arr[41][1])],
+                                        [arr[42][0], parseInt(arr[42][1])],
+                                        [arr[43][0], parseInt(arr[43][1])],
+                                        [arr[44][0], parseInt(arr[44][1])],
+                                        [arr[45][0], parseInt(arr[45][1])],
+                                        [arr[46][0], parseInt(arr[46][1])],
+                                        [arr[47][0], parseInt(arr[47][1])],
+                                        [arr[48][0], parseInt(arr[48][1])],
+                                        [arr[49][0], parseInt(arr[49][1])],
+                                        [arr[50][0], parseInt(arr[50][1])],
+                                        [arr[51][0], parseInt(arr[51][1])],
+                                        [arr[52][0], parseInt(arr[52][1])],
+                                    ]);
+
+                                    dashboard.bind(programmaticSlider, programmaticChart);
+                                    dashboard.draw(data);
+
+                                    programmaticChart.setOption('is3D', true);
+                                    programmaticChart.draw();
+                                    // end of drawing pie chart
+
+                                    // draw bubble chart
+                                    google.charts.setOnLoadCallback(drawChart);
+                                    function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['State', 'Population', 'CrimeRate', 'ViolentCrime'],
+                                            [arr[1][0], parseInt(arr[1][1]), parseFloat(arr[1][12]), parseInt(arr[1][2])],
+                                            [arr[2][0], parseInt(arr[2][1]), parseFloat(arr[2][12]), parseInt(arr[2][2])],
+                                            [arr[3][0], parseInt(arr[3][1]), parseFloat(arr[3][12]), parseInt(arr[3][2])],
+                                            [arr[4][0], parseInt(arr[4][1]), parseFloat(arr[4][12]), parseInt(arr[4][2])],
+                                            [arr[5][0], parseInt(arr[5][1]), parseFloat(arr[5][12]), parseInt(arr[5][2])],
+                                            [arr[6][0], parseInt(arr[6][1]), parseFloat(arr[6][12]), parseInt(arr[6][2])],
+                                            [arr[7][0], parseInt(arr[7][1]), parseFloat(arr[7][12]), parseInt(arr[7][2])],
+                                            [arr[8][0], parseInt(arr[8][1]), parseFloat(arr[8][12]), parseInt(arr[8][2])],
+                                            [arr[9][0], parseInt(arr[9][1]), parseFloat(arr[9][12]), parseInt(arr[9][2])],
+                                            [arr[10][0], parseInt(arr[10][1]), parseFloat(arr[10][12]), parseInt(arr[10][2])],
+                                            [arr[11][0], parseInt(arr[11][1]), parseFloat(arr[11][12]), parseInt(arr[11][2])],
+                                            [arr[12][0], parseInt(arr[12][1]), parseFloat(arr[12][12]), parseInt(arr[12][2])],
+                                            [arr[13][0], parseInt(arr[13][1]), parseFloat(arr[13][12]), parseInt(arr[13][2])],
+                                            [arr[14][0], parseInt(arr[14][1]), parseFloat(arr[14][12]), parseInt(arr[14][2])],
+                                            [arr[15][0], parseInt(arr[15][1]), parseFloat(arr[15][12]), parseInt(arr[15][2])],
+                                            [arr[16][0], parseInt(arr[16][1]), parseFloat(arr[16][12]), parseInt(arr[16][2])],
+                                            [arr[17][0], parseInt(arr[17][1]), parseFloat(arr[17][12]), parseInt(arr[17][2])],
+                                            [arr[18][0], parseInt(arr[18][1]), parseFloat(arr[18][12]), parseInt(arr[18][2])],
+                                            [arr[19][0], parseInt(arr[19][1]), parseFloat(arr[19][12]), parseInt(arr[19][2])],
+                                            [arr[20][0], parseInt(arr[20][1]), parseFloat(arr[20][12]), parseInt(arr[20][2])],
+                                            [arr[21][0], parseInt(arr[21][1]), parseFloat(arr[21][12]), parseInt(arr[21][2])],
+                                            [arr[22][0], parseInt(arr[22][1]), parseFloat(arr[22][12]), parseInt(arr[22][2])],
+                                            [arr[23][0], parseInt(arr[23][1]), parseFloat(arr[23][12]), parseInt(arr[23][2])],
+                                            [arr[24][0], parseInt(arr[24][1]), parseFloat(arr[24][12]), parseInt(arr[24][2])],
+                                            [arr[25][0], parseInt(arr[25][1]), parseFloat(arr[25][12]), parseInt(arr[25][2])],
+                                            [arr[26][0], parseInt(arr[26][1]), parseFloat(arr[26][12]), parseInt(arr[26][2])],
+                                            [arr[27][0], parseInt(arr[27][1]), parseFloat(arr[27][12]), parseInt(arr[27][2])],
+                                            [arr[28][0], parseInt(arr[28][1]), parseFloat(arr[28][12]), parseInt(arr[28][2])],
+                                            [arr[29][0], parseInt(arr[29][1]), parseFloat(arr[29][12]), parseInt(arr[29][2])],
+                                            [arr[30][0], parseInt(arr[30][1]), parseFloat(arr[30][12]), parseInt(arr[30][2])],
+                                            [arr[31][0], parseInt(arr[31][1]), parseFloat(arr[31][12]), parseInt(arr[31][2])],
+                                            [arr[32][0], parseInt(arr[32][1]), parseFloat(arr[32][12]), parseInt(arr[32][2])],
+                                            [arr[33][0], parseInt(arr[33][1]), parseFloat(arr[33][12]), parseInt(arr[33][2])],
+                                            [arr[34][0], parseInt(arr[34][1]), parseFloat(arr[34][12]), parseInt(arr[34][2])],
+                                            [arr[35][0], parseInt(arr[35][1]), parseFloat(arr[35][12]), parseInt(arr[35][2])],
+                                            [arr[36][0], parseInt(arr[36][1]), parseFloat(arr[36][12]), parseInt(arr[36][2])],
+                                            [arr[37][0], parseInt(arr[37][1]), parseFloat(arr[37][12]), parseInt(arr[37][2])],
+                                            [arr[38][0], parseInt(arr[38][1]), parseFloat(arr[38][12]), parseInt(arr[38][2])],
+                                            [arr[39][0], parseInt(arr[39][1]), parseFloat(arr[39][12]), parseInt(arr[39][2])],
+                                            [arr[40][0], parseInt(arr[40][1]), parseFloat(arr[40][12]), parseInt(arr[40][2])],
+                                            [arr[41][0], parseInt(arr[41][1]), parseFloat(arr[41][12]), parseInt(arr[41][2])],
+                                            [arr[42][0], parseInt(arr[42][1]), parseFloat(arr[42][12]), parseInt(arr[42][2])],
+                                            [arr[43][0], parseInt(arr[43][1]), parseFloat(arr[43][12]), parseInt(arr[43][2])],
+                                            [arr[44][0], parseInt(arr[44][1]), parseFloat(arr[44][12]), parseInt(arr[44][2])],
+                                            [arr[45][0], parseInt(arr[45][1]), parseFloat(arr[45][12]), parseInt(arr[45][2])],
+                                            [arr[46][0], parseInt(arr[46][1]), parseFloat(arr[46][12]), parseInt(arr[46][2])],
+                                            [arr[47][0], parseInt(arr[47][1]), parseFloat(arr[47][12]), parseInt(arr[47][2])],
+                                            [arr[48][0], parseInt(arr[48][1]), parseFloat(arr[48][12]), parseInt(arr[48][2])],
+                                            [arr[49][0], parseInt(arr[49][1]), parseFloat(arr[49][12]), parseInt(arr[49][2])],
+                                            [arr[50][0], parseInt(arr[50][1]), parseFloat(arr[50][12]), parseInt(arr[50][2])],
+                                            [arr[51][0], parseInt(arr[51][1]), parseFloat(arr[51][12]), parseInt(arr[51][2])],
+                                            [arr[52][0], parseInt(arr[52][1]), parseFloat(arr[52][12]), parseInt(arr[52][2])],
+                                        ]);
+
+                                        var options = {
+                                            colorAxis: {colors: ['white', 'green']}
+                                        };
+
+                                        var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+                                        chart.draw(data, options);
                                     }
-                                });
+                                    // end of drawing bubble chart
+                                }
+                                // end of drawing google chart
 
-                                var programmaticChart  = new google.visualization.ChartWrapper({
-                                    'chartType': 'PieChart',
-                                    'containerId': 'programmatic_chart_div',
-                                    'options': {
-                                        'width': 300,
-                                        'height': 300,
-                                        'legend': 'none',
-                                        'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
-                                        'pieSliceText': 'value'
-                                    }
-                                });
-
-                                var data = google.visualization.arrayToDataTable([
-                                    ['Name', 'Donuts eaten'],
-                                    ['Michael' , 5],
-                                    ['Elisa', 7],
-                                    ['Robert', 3],
-                                    ['John', 2],
-                                    ['Jessica', 6],
-                                    ['Aaron', 1],
-                                    ['Margareth', 8]
-                                ]);
-
-                                dashboard.bind(programmaticSlider, programmaticChart);
-                                dashboard.draw(data);
-
-                                changeRange = function() {
-                                    programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
-                                    programmaticSlider.draw();
-                                };
-
-                                programmaticChart.setOption('is3D', true);
-                                programmaticChart.draw();
-                            }
+                            });
 
                         </script>
                     </div>
                     <!-- /dashboard -->
 
                     <!-- dashboard div -->
-                    <div id="programmatic_dashboard_div" style="border: 1px solid #ccc">
+                    <div id="programmatic_dashboard_div" style="border: 2px solid #ccc">
                         <table class="columns">
                             <tr>
                                 <td>
-                                    <div id="programmatic_control_div" style="padding-left: 2em; min-width: 250px"></div>
-                                    <div>
-<!--                                        <button style="margin: 1em 1em 1em 2em" onclick="changeRange();">-->
-<!--                                            Select range [2, 5]-->
-<!--                                        </button><br />-->
-                                    </div>
-                                    <script type="text/javascript">
-                                        function changeRange() {
-                                            programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
-                                            programmaticSlider.draw();
-                                        }
-
-                                        function changeOptions() {
-                                            programmaticChart.setOption('is3D', true);
-                                            programmaticChart.draw();
-                                        }
-                                    </script>
+                                    <div id="programmatic_control_div" style="padding-left: 8em; min-width: 400px"></div>
                                 </td>
                                 <td>
                                     <div id="programmatic_chart_div"></div>
@@ -148,6 +267,11 @@
                         </table>
                     </div>
                     <!-- /dashboard div -->
+
+                    <!-- bubble chart div -->
+                    <div id="chart_div" align="center" style="width: 1600px; height: 2000px;"></div>
+                    <!-- /bubble chart div -->
+
                 </div>
             </div>
         </div>

@@ -58,12 +58,40 @@
 
                     <!-- calendar -->
                     <div id="calendar">
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                                 google.charts.load("current", {packages:["calendar"]});
                                 google.charts.setOnLoadCallback(drawChart);
 
                                 function drawChart() {
+
+                                    jQuery.get('./dataset/Chicago.txt', function(txt) {
+                                        //$('#output').text(txt);
+                                        dataStr= new String(txt);
+
+                                        // construct map
+
+
+                                        // end of constructing map
+
+                                        // for (i = 0; i < dataFile.length;) {
+                                        // alert(dataFile.length)
+                                        for (i = 0; i < dataStr.length;) {
+                                            var primary_type_i = dataStr.indexOf("primary_type", i);
+                                            var start_of_primary_type_i = dataStr.indexOf(":", primary_type_i);
+                                            var end_of_primary_type_i = dataStr.indexOf(",", primary_type_i);
+                                            var primary_type = dataStr.substring(start_of_primary_type_i + 2, end_of_primary_type_i - 1);
+                                            //alert(primary_type);
+                                            var date_i = dataStr.indexOf("updated_on", end_of_primary_type_i);
+                                            var start_of_date_i = dataStr.indexOf(":", date_i);
+                                            var date = dataStr.substring(start_of_date_i + 2, start_of_date_i + 12);
+
+                                            //alert(date);
+                                            i += start_of_date_i;
+                                        }
+                                        //alert(dataStr);
+
+                                    });
+
                                     var dataTable = new google.visualization.DataTable();
                                     dataTable.addColumn({ type: 'date', id: 'Date' });
                                     dataTable.addColumn({ type: 'number', id: 'Crime Number' });
@@ -90,8 +118,9 @@
                                         title: "Crime Number",
                                         height: 500,
                                         calendar: { cellSize: 20 },
-
                                     };
+
+
 
                                     chart.draw(dataTable, options);
                                 }

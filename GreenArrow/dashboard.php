@@ -30,6 +30,8 @@
 
     <script src="./js/hashmap.js"></script>
 
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
 </head>
 
 <body>
@@ -54,7 +56,6 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
                     <!-- dashboard - start -->
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -79,12 +80,15 @@
                                     }
                                 });
 
+                                var data = $.csv.toObjects('./dataset/table_5_crime_in_the_united_states_by_state_2015.csv');
+                                console.log(data);
+
                                 var programmaticChart  = new google.visualization.ChartWrapper({
                                     'chartType': 'PieChart',
                                     'containerId': 'programmatic_chart_div',
                                     'options': {
-                                        'width': 300,
-                                        'height': 300,
+                                        'width': 600,
+                                        'height': 400,
                                         'legend': 'none',
                                         'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
                                         'pieSliceText': 'value'

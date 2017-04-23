@@ -28,6 +28,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
 </head>
 
 <body>
@@ -53,7 +55,7 @@
                 <div class="col-lg-12">
                     <!-- google maps - start -->
                     <div id="googlemaps">
-                        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
                         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
                         <script src="js/plugins.js"></script>
                         <script src="js/main.js"></script>

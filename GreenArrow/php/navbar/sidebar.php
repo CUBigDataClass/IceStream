@@ -5,7 +5,7 @@
                 <a href="./index.php">Maps</a>
             </li>
             <li>
-                <a href="#">Dashboard</a>
+                <a href="./dashboard.php">Dashboard</a>
             </li>
             <li>
                 <a href="./usa_overview_d3.php">D3</a>

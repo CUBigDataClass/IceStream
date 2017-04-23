@@ -50,7 +50,7 @@
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div id="title" align="center">
-                <h3>Crime in Chicago
+                <h3>Crime in Detroit
                     <span class="label label-default">2009 to present</span>
                 </h3>
                 <a href="https://data.detroitmi.gov/Public-Safety/DPD-All-Crime-Incidents-2009-Present-Data-Lens-Pro/bzdg-syqn"> Data Source </a>

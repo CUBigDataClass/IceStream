@@ -85,17 +85,11 @@
 //                                var ViolentCrimeRate = new Array();
 
                                 // save all data into "arr"
-                                var arr = new Array(13);
+                                var arr = new Array(53);
                                 var dataLines = dataStr.split("\n");
                                 for (i = 0; i < 53; i++) {
-                                    console.log(dataLines[i]);
-                                    if (i > 0) {
-                                        var lineArr = dataLines[i].split(",");
-                                        arr.push(lineArr);
-                                        // console.log(lineArr);
-                                    }
+                                    arr[i] = dataLines[i].split(",");
                                 }
-
 
                                 // draw google chart
                                 google.charts.load('current', {'packages':['corechart', 'controls']});
@@ -130,13 +124,58 @@
 
                                     var data = google.visualization.arrayToDataTable([
                                         ['Name', 'Polulation'],
-                                        [arr[0] , arr[1]],
-                                        ['Elisa', 7],
-                                        ['Robert', 3],
-                                        ['John', 2],
-                                        ['Jessica', 6],
-                                        ['Aaron', 1],
-                                        ['Margareth', 8]
+                                        [arr[1][0], parseInt(arr[1][1])],
+                                        [arr[2][0], parseInt(arr[2][1])],
+                                        [arr[3][0], parseInt(arr[3][1])],
+                                        [arr[4][0], parseInt(arr[4][1])],
+                                        [arr[5][0], parseInt(arr[5][1])],
+                                        [arr[6][0], parseInt(arr[6][1])],
+                                        [arr[7][0], parseInt(arr[7][1])],
+                                        [arr[8][0], parseInt(arr[8][1])],
+                                        [arr[9][0], parseInt(arr[9][1])],
+                                        [arr[10][0], parseInt(arr[10][1])],
+                                        [arr[11][0], parseInt(arr[11][1])],
+                                        [arr[12][0], parseInt(arr[12][1])],
+                                        [arr[13][0], parseInt(arr[13][1])],
+                                        [arr[14][0], parseInt(arr[14][1])],
+                                        [arr[15][0], parseInt(arr[15][1])],
+                                        [arr[16][0], parseInt(arr[16][1])],
+                                        [arr[17][0], parseInt(arr[17][1])],
+                                        [arr[18][0], parseInt(arr[18][1])],
+                                        [arr[19][0], parseInt(arr[19][1])],
+                                        [arr[20][0], parseInt(arr[20][1])],
+                                        [arr[21][0], parseInt(arr[21][1])],
+                                        [arr[22][0], parseInt(arr[22][1])],
+                                        [arr[23][0], parseInt(arr[23][1])],
+                                        [arr[24][0], parseInt(arr[24][1])],
+                                        [arr[25][0], parseInt(arr[25][1])],
+                                        [arr[26][0], parseInt(arr[26][1])],
+                                        [arr[27][0], parseInt(arr[27][1])],
+                                        [arr[28][0], parseInt(arr[28][1])],
+                                        [arr[29][0], parseInt(arr[29][1])],
+                                        [arr[30][0], parseInt(arr[30][1])],
+                                        [arr[31][0], parseInt(arr[31][1])],
+                                        [arr[32][0], parseInt(arr[32][1])],
+                                        [arr[33][0], parseInt(arr[33][1])],
+                                        [arr[34][0], parseInt(arr[34][1])],
+                                        [arr[35][0], parseInt(arr[35][1])],
+                                        [arr[36][0], parseInt(arr[36][1])],
+                                        [arr[37][0], parseInt(arr[37][1])],
+                                        [arr[38][0], parseInt(arr[38][1])],
+                                        [arr[39][0], parseInt(arr[39][1])],
+                                        [arr[40][0], parseInt(arr[40][1])],
+                                        [arr[41][0], parseInt(arr[41][1])],
+                                        [arr[42][0], parseInt(arr[42][1])],
+                                        [arr[43][0], parseInt(arr[43][1])],
+                                        [arr[44][0], parseInt(arr[44][1])],
+                                        [arr[45][0], parseInt(arr[45][1])],
+                                        [arr[46][0], parseInt(arr[46][1])],
+                                        [arr[47][0], parseInt(arr[47][1])],
+                                        [arr[48][0], parseInt(arr[48][1])],
+                                        [arr[49][0], parseInt(arr[49][1])],
+                                        [arr[50][0], parseInt(arr[50][1])],
+                                        [arr[51][0], parseInt(arr[51][1])],
+                                        [arr[52][0], parseInt(arr[52][1])],
                                     ]);
 
                                     dashboard.bind(programmaticSlider, programmaticChart);
@@ -159,12 +198,6 @@
                             <tr>
                                 <td>
                                     <div id="programmatic_control_div" style="padding-left: 8em; min-width: 400px"></div>
-                                    <script type="text/javascript">
-                                        function changeRange() {
-                                            programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
-                                            programmaticSlider.draw();
-                                        }
-                                    </script>
                                 </td>
                                 <td>
                                     <div id="programmatic_chart_div"></div>

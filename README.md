@@ -1,6 +1,10 @@
-# ATLS-5214-BigDataArchitecture
-## Team: IceStream
+# ATLS-5214-BigDataArchitecture Team: IceStream
+## Links
+[Github Repo](https://github.com/CUBigDataClass/IceStream)
+[Pivotal](https://www.pivotaltracker.com/n/projects/1972679)
 [Team Link](https://docs.google.com/spreadsheets/d/1Gv0jFhpdrLyGMqTjAnCv5wOGW3jQOCt-bI6XhQpgD9I/edit)
+[Lectures](https://drive.google.com/open?id=0B3LEOOo_IkKfV1JOOXJvWl92Nnc)
+
 ## Project Description
 This project aims at using Big Data technologies to build an interactive website displaying crime map. Users would be able to see crime data in a specific city. A crime dataset from government is used. Tech stack will be shown below.
 

@@ -57,6 +57,15 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">
+
+            <div id="title" align="center">
+                <h3>Crime in the United States
+                    <span class="label label-default">by State, 2015</span>
+                </h3>
+                <a href="https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-5"> Data Source </a>
+                <br/><br/><br/>
+            </div>
+
             <div class="row">
                 <div class="col-lg-12">
 
@@ -66,19 +75,6 @@
 
                             jQuery.get('dataset/table_5_crime_in_the_united_states_by_state_2015.csv', function(data) {
                                 dataStr = new String(data);
-//                                var State = new Array();
-//                                var Poplulation = new Array();
-//                                var ViolentCrime1 = new Array();
-//                                var MurderAndNonnegligentManslaughter = new Array();
-//                                var Rape2 = new Array();
-//                                var Rape3 = new Array();
-//                                var Robbery = new Array();
-//                                var AggravatedAssault = new Array();
-//                                var PropertyCrime = new Array();
-//                                var Burglary = new Array();
-//                                var Larceny = new Array();
-//                                var MotorVehicleTheft = new Array();
-//                                var ViolentCrimeRate = new Array();
 
                                 // save all data into "arr"
                                 var arr = new Array(53);

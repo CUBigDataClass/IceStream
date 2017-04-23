@@ -240,10 +240,62 @@
                                             colorAxis: {colors: ['white', 'green']}
                                         };
 
-                                        var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+                                        var chart = new google.visualization.BubbleChart(document.getElementById('bubble_chart_div'));
                                         chart.draw(data, options);
                                     }
                                     // end of drawing bubble chart
+
+                                    // draw bar chart
+                                    google.charts.load('current', {packages: ['corechart', 'bar']});
+                                    google.charts.setOnLoadCallback(drawMaterial);
+
+                                    function drawMaterial() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['State', 'ViolentCrime1' ,'MurderAndNonnegligentManslaughter', 'Rape1', 'Rape2', 'Robbery', 'AggravatedAssault', 'PropertyCrime', 'Burglary', 'Larceny-theft', 'MotorVehicleTheft'],
+                                            [arr[1][0], parseFloat(arr[1][2]), parseInt(arr[1][3]), parseInt(arr[1][4]), parseInt(arr[1][5]), parseInt(arr[1][6]), parseInt(arr[1][7]), parseInt(arr[1][8]), parseInt(arr[1][9]), parseInt(arr[1][10]), parseInt(arr[1][11])],
+                                        ]);
+
+                                        var materialOptions = {
+                                            chart: {
+                                                title: 'Crime in the United States by State, 2015'
+                                            },
+                                            vAxis: {
+                                                title: 'ViolentCrime1'
+                                            },
+                                            vAxis: {
+                                                title: 'MurderAndNonnegligentManslaughter'
+                                            },
+                                            vAxis: {
+                                                title: 'Rape1'
+                                            },
+                                            vAxis: {
+                                                title: 'Rape2'
+                                            },
+                                            vAxis: {
+                                                title: 'Robbery'
+                                            },
+                                            vAxis: {
+                                                title: 'AggravatedAssault'
+                                            },
+                                            vAxis: {
+                                                title: 'PropertyCrime'
+                                            },
+                                            vAxis: {
+                                                title: 'Burglary'
+                                            },
+                                            vAxis: {
+                                                title: 'Larceny-theft'
+                                            },
+                                            vAxis: {
+                                                title: 'MotorVehicleTheft'
+                                            },
+                                            bars: 'horizontal'
+                                        };
+                                        var materialChart = new google.charts.Bar(document.getElementById('bar_chart_div'));
+                                        google.charts.Bar(document.getElementById('bar_chart_div'));
+                                        materialChart.draw(data, materialOptions);
+                                    }
+                                    // end of drawing bar chart
                                 }
                                 // end of drawing google chart
 
@@ -269,8 +321,10 @@
                     <!-- /dashboard div -->
 
                     <!-- bubble chart div -->
-                    <div id="chart_div" align="center" style="width: 1600px; height: 2000px;"></div>
+                    <div id="bubble_chart_div" align="center" style="width: 1600px; height: 2000px;"></div>
                     <!-- /bubble chart div -->
+
+                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 600px;></div>
 
                 </div>
             </div>

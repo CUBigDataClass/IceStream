@@ -179,6 +179,75 @@
 
                                     programmaticChart.setOption('is3D', true);
                                     programmaticChart.draw();
+                                    // end of drawing pie chart
+
+                                    // draw bubble chart
+                                    google.charts.setOnLoadCallback(drawChart);
+                                    function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['State', 'Population', 'CrimeRate', 'ViolentCrime'],
+                                            [arr[1][0], parseInt(arr[1][1]), parseFloat(arr[1][12]), parseInt(arr[1][2])],
+                                            [arr[2][0], parseInt(arr[2][1]), parseFloat(arr[2][12]), parseInt(arr[2][2])],
+                                            [arr[3][0], parseInt(arr[3][1]), parseFloat(arr[3][12]), parseInt(arr[3][2])],
+                                            [arr[4][0], parseInt(arr[4][1]), parseFloat(arr[4][12]), parseInt(arr[4][2])],
+                                            [arr[5][0], parseInt(arr[5][1]), parseFloat(arr[5][12]), parseInt(arr[5][2])],
+                                            [arr[6][0], parseInt(arr[6][1]), parseFloat(arr[6][12]), parseInt(arr[6][2])],
+                                            [arr[7][0], parseInt(arr[7][1]), parseFloat(arr[7][12]), parseInt(arr[7][2])],
+                                            [arr[8][0], parseInt(arr[8][1]), parseFloat(arr[8][12]), parseInt(arr[8][2])],
+                                            [arr[9][0], parseInt(arr[9][1]), parseFloat(arr[9][12]), parseInt(arr[9][2])],
+                                            [arr[10][0], parseInt(arr[10][1]), parseFloat(arr[10][12]), parseInt(arr[10][2])],
+                                            [arr[11][0], parseInt(arr[11][1]), parseFloat(arr[11][12]), parseInt(arr[11][2])],
+                                            [arr[12][0], parseInt(arr[12][1]), parseFloat(arr[12][12]), parseInt(arr[12][2])],
+                                            [arr[13][0], parseInt(arr[13][1]), parseFloat(arr[13][12]), parseInt(arr[13][2])],
+                                            [arr[14][0], parseInt(arr[14][1]), parseFloat(arr[14][12]), parseInt(arr[14][2])],
+                                            [arr[15][0], parseInt(arr[15][1]), parseFloat(arr[15][12]), parseInt(arr[15][2])],
+                                            [arr[16][0], parseInt(arr[16][1]), parseFloat(arr[16][12]), parseInt(arr[16][2])],
+                                            [arr[17][0], parseInt(arr[17][1]), parseFloat(arr[17][12]), parseInt(arr[17][2])],
+                                            [arr[18][0], parseInt(arr[18][1]), parseFloat(arr[18][12]), parseInt(arr[18][2])],
+                                            [arr[19][0], parseInt(arr[19][1]), parseFloat(arr[19][12]), parseInt(arr[19][2])],
+                                            [arr[20][0], parseInt(arr[20][1]), parseFloat(arr[20][12]), parseInt(arr[20][2])],
+                                            [arr[21][0], parseInt(arr[21][1]), parseFloat(arr[21][12]), parseInt(arr[21][2])],
+                                            [arr[22][0], parseInt(arr[22][1]), parseFloat(arr[22][12]), parseInt(arr[22][2])],
+                                            [arr[23][0], parseInt(arr[23][1]), parseFloat(arr[23][12]), parseInt(arr[23][2])],
+                                            [arr[24][0], parseInt(arr[24][1]), parseFloat(arr[24][12]), parseInt(arr[24][2])],
+                                            [arr[25][0], parseInt(arr[25][1]), parseFloat(arr[25][12]), parseInt(arr[25][2])],
+                                            [arr[26][0], parseInt(arr[26][1]), parseFloat(arr[26][12]), parseInt(arr[26][2])],
+                                            [arr[27][0], parseInt(arr[27][1]), parseFloat(arr[27][12]), parseInt(arr[27][2])],
+                                            [arr[28][0], parseInt(arr[28][1]), parseFloat(arr[28][12]), parseInt(arr[28][2])],
+                                            [arr[29][0], parseInt(arr[29][1]), parseFloat(arr[29][12]), parseInt(arr[29][2])],
+                                            [arr[30][0], parseInt(arr[30][1]), parseFloat(arr[30][12]), parseInt(arr[30][2])],
+                                            [arr[31][0], parseInt(arr[31][1]), parseFloat(arr[31][12]), parseInt(arr[31][2])],
+                                            [arr[32][0], parseInt(arr[32][1]), parseFloat(arr[32][12]), parseInt(arr[32][2])],
+                                            [arr[33][0], parseInt(arr[33][1]), parseFloat(arr[33][12]), parseInt(arr[33][2])],
+                                            [arr[34][0], parseInt(arr[34][1]), parseFloat(arr[34][12]), parseInt(arr[34][2])],
+                                            [arr[35][0], parseInt(arr[35][1]), parseFloat(arr[35][12]), parseInt(arr[35][2])],
+                                            [arr[36][0], parseInt(arr[36][1]), parseFloat(arr[36][12]), parseInt(arr[36][2])],
+                                            [arr[37][0], parseInt(arr[37][1]), parseFloat(arr[37][12]), parseInt(arr[37][2])],
+                                            [arr[38][0], parseInt(arr[38][1]), parseFloat(arr[38][12]), parseInt(arr[38][2])],
+                                            [arr[39][0], parseInt(arr[39][1]), parseFloat(arr[39][12]), parseInt(arr[39][2])],
+                                            [arr[40][0], parseInt(arr[40][1]), parseFloat(arr[40][12]), parseInt(arr[40][2])],
+                                            [arr[41][0], parseInt(arr[41][1]), parseFloat(arr[41][12]), parseInt(arr[41][2])],
+                                            [arr[42][0], parseInt(arr[42][1]), parseFloat(arr[42][12]), parseInt(arr[42][2])],
+                                            [arr[43][0], parseInt(arr[43][1]), parseFloat(arr[43][12]), parseInt(arr[43][2])],
+                                            [arr[44][0], parseInt(arr[44][1]), parseFloat(arr[44][12]), parseInt(arr[44][2])],
+                                            [arr[45][0], parseInt(arr[45][1]), parseFloat(arr[45][12]), parseInt(arr[45][2])],
+                                            [arr[46][0], parseInt(arr[46][1]), parseFloat(arr[46][12]), parseInt(arr[46][2])],
+                                            [arr[47][0], parseInt(arr[47][1]), parseFloat(arr[47][12]), parseInt(arr[47][2])],
+                                            [arr[48][0], parseInt(arr[48][1]), parseFloat(arr[48][12]), parseInt(arr[48][2])],
+                                            [arr[49][0], parseInt(arr[49][1]), parseFloat(arr[49][12]), parseInt(arr[49][2])],
+                                            [arr[50][0], parseInt(arr[50][1]), parseFloat(arr[50][12]), parseInt(arr[50][2])],
+                                            [arr[51][0], parseInt(arr[51][1]), parseFloat(arr[51][12]), parseInt(arr[51][2])],
+                                            [arr[52][0], parseInt(arr[52][1]), parseFloat(arr[52][12]), parseInt(arr[52][2])],
+                                        ]);
+
+                                        var options = {
+                                            colorAxis: {colors: ['white', 'green']}
+                                        };
+
+                                        var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+                                        chart.draw(data, options);
+                                    }
+                                    // end of drawing bubble chart
                                 }
                                 // end of drawing google chart
 
@@ -203,33 +272,8 @@
                     </div>
                     <!-- /dashboard div -->
 
-                    <!-- bubble chart -->
-                    <script type="text/javascript">
-                        // google.charts.load("current", {packages:["corechart"]});
-                        google.charts.setOnLoadCallback(drawChart);
-                        function drawChart() {
-                            var data = google.visualization.arrayToDataTable([
-                                ['ID', 'X', 'Y', 'Temperature'],
-                                ['',   80,  167,      120],
-                                ['',   79,  136,      130],
-                                ['',   78,  184,      50],
-                                ['',   72,  278,      230],
-                                ['',   81,  200,      210],
-                                ['',   72,  170,      100],
-                                ['',   68,  477,      80]
-                            ]);
-
-                            var options = {
-                                colorAxis: {colors: ['white', 'green']}
-                            };
-
-                            var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
-                            chart.draw(data, options);
-                        }
-                    </script>
-                    <!-- bubble chart -->
                     <!-- bubble chart div -->
-                    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                    <div id="chart_div" align="center" style="width: 1600px; height: 2000px;"></div>
                     <!-- /bubble chart div -->
 
                 </div>

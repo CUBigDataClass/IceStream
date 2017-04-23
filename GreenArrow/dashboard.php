@@ -33,8 +33,8 @@
     <link href="http://code.jquery.com/ui/1.9.0/themes/cupertino/jquery-ui.css" rel="stylesheet" />
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
     <script></script>
-    <script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 
@@ -60,13 +60,9 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <!-- dashboard - start -->
-                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
                     <!-- dashboard -->
                     <div id="dashboard" align="center">
                         <script type="text/javascript">
-
 
                             jQuery.get('dataset/table_5_crime_in_the_united_states_by_state_2015.csv', function(data) {
                                 dataStr = new String(data);
@@ -206,6 +202,36 @@
                         </table>
                     </div>
                     <!-- /dashboard div -->
+
+                    <!-- bubble chart -->
+                    <script type="text/javascript">
+                        google.charts.load("current", {packages:["corechart"]});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['ID', 'X', 'Y', 'Temperature'],
+                                ['',   80,  167,      120],
+                                ['',   79,  136,      130],
+                                ['',   78,  184,      50],
+                                ['',   72,  278,      230],
+                                ['',   81,  200,      210],
+                                ['',   72,  170,      100],
+                                ['',   68,  477,      80]
+                            ]);
+
+                            var options = {
+                                colorAxis: {colors: ['white', 'green']}
+                            };
+
+                            var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+                            chart.draw(data, options);
+                        }
+                    </script>
+                    <!-- bubble chart -->
+                    <!-- bubble chart div -->
+                    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                    <!-- /bubble chart div -->
+
                 </div>
             </div>
         </div>

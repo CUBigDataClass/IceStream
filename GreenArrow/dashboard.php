@@ -295,44 +295,76 @@
                                             chart: {
                                                 title: 'Crime in the United States by State, 2015'
                                             },
-                                            vAxis: {
-                                                title: 'ViolentCrime1'
-                                            },
-                                            vAxis: {
-                                                title: 'MurderAndNonnegligentManslaughter'
-                                            },
-                                            vAxis: {
-                                                title: 'Rape1'
-                                            },
-                                            vAxis: {
-                                                title: 'Rape2'
-                                            },
-                                            vAxis: {
-                                                title: 'Robbery'
-                                            },
-                                            vAxis: {
-                                                title: 'AggravatedAssault'
-                                            },
-                                            vAxis: {
-                                                title: 'PropertyCrime'
-                                            },
-                                            vAxis: {
-                                                title: 'Burglary'
-                                            },
-                                            vAxis: {
-                                                title: 'Larceny-theft'
-                                            },
-                                            vAxis: {
-                                                title: 'MotorVehicleTheft'
-                                            },
+//                                            vAxis: {
+//                                                title: 'ViolentCrime1'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'MurderAndNonnegligentManslaughter'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'Rape1'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'Rape2'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'Robbery'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'AggravatedAssault'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'PropertyCrime'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'Burglary'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'Larceny-theft'
+//                                            },
+//                                            vAxis: {
+//                                                title: 'MotorVehicleTheft'
+//                                            },
                                             bars: 'horizontal',
-                                            animation:{
-                                                duration: 10000,
-                                                easing: 'out'
+                                            animation: {
+                                                duration: 1000,
+                                                easing: 'in'
                                             }
                                         };
+
+                                        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+
+                                        var addButton = document.getElementById('addColumn');
+                                        var removeButton = document.getElementById('removeColumn');
+                                        // Disabling the buttons while the chart is drawing.
+                                        addButton.disabled = true;
+                                        removeButton.disabled = true;
                                         var materialChart = new google.charts.Bar(document.getElementById('bar_chart_div'));
-                                        google.charts.Bar(document.getElementById('bar_chart_div'));
+                                        google.visualization.events.addListener(materialChart, 'ready',
+                                            function() {
+                                                // Enabling only relevant buttons.
+                                                addButton.disabled = (data.getNumberOfColumns() - 1) >= materialChart.length;
+                                                removeButton.disabled = (data.getNumberOfColumns() - 1) < 2;
+                                            });
+                                        materialChart.draw(data, materialOptions);
+
+                                        function shuffleAndDrawChart() {
+                                            for (var i = 0; i < data.getNumberOfRows(); ++i) {
+                                                for (var j = 1; j < data.getNumberOfColumns(); ++j) {
+                                                    var num = Math.floor(Math.random() * 1000);
+                                                    data.setValue(i, j, num);
+                                                }
+                                            }
+                                            materialChart.draw(data, materialOptions);
+                                        }
+                                        addButton.onclick = function() {
+                                            data.addColumn('number', chars[data.getNumberOfColumns() - 1]);
+                                            shuffleAndDrawChart();
+                                        }
+                                        removeButton.onclick = function() {
+                                            data.removeColumn(data.getNumberOfColumns() - 1);
+                                            shuffleAndDrawChart();
+                                        }
                                         materialChart.draw(data, materialOptions);
                                     }
                                     // end of drawing bar chart
@@ -429,6 +461,12 @@
                     <!-- /dashboard div -->
 
                     <div id="bar_chart_div"  align="center" style="width: 1400px; height: 300px;"></div>
+
+                    <br/>
+                    <div id="buttonDiv" align="center">
+                        <button id="addColumn" class="btn btn-success">Add A Column</button>
+                        <button id="removeColumn" class="btn btn-danger">Remove A Column</button>
+                    </div>
                     <div id="bubble_chart_div" align="center" style="width: 1200px; height: 1200px;"></div>
 
                 </div>

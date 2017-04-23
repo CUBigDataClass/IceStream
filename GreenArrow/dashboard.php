@@ -66,8 +66,7 @@
                     <!-- dashboard -->
                     <div id="dashboard" align="center">
                         <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart', 'controls']});
-                            google.charts.setOnLoadCallback(drawStuff);
+
 
                             jQuery.get('dataset/table_5_crime_in_the_united_states_by_state_2015.csv', function(data) {
                                 dataStr = new String(data);
@@ -85,62 +84,70 @@
 //                                var MotorVehicleTheft = new Array();
 //                                var ViolentCrimeRate = new Array();
 
+                                // save all data into "arr"
                                 var arr = new Array(13);
-
                                 var dataLines = dataStr.split("\n");
                                 for (i = 0; i < 53; i++) {
                                     console.log(dataLines[i]);
                                     if (i > 0) {
-
+                                        var lineArr = dataLines[i].split(",");
+                                        arr.push(lineArr);
+                                        // console.log(lineArr);
                                     }
                                 }
 
+
+                                // draw google chart
+                                google.charts.load('current', {'packages':['corechart', 'controls']});
+                                google.charts.setOnLoadCallback(drawStuff);
+
+                                function drawStuff() {
+
+                                    var dashboard = new google.visualization.Dashboard(
+                                        document.getElementById('programmatic_dashboard_div'));
+
+                                    // We omit "var" so that programmaticSlider is visible to changeRange.
+                                    var programmaticSlider = new google.visualization.ControlWrapper({
+                                        'controlType': 'NumberRangeFilter',
+                                        'containerId': 'programmatic_control_div',
+                                        'options': {
+                                            'filterColumnLabel': 'Polulation',
+                                            'ui': {'labelStacking': 'vertical'}
+                                        }
+                                    });
+
+                                    var programmaticChart  = new google.visualization.ChartWrapper({
+                                        'chartType': 'PieChart',
+                                        'containerId': 'programmatic_chart_div',
+                                        'options': {
+                                            'width': 900,
+                                            'height': 550,
+                                            'legend': 'none',
+                                            'chartArea': {'left': 15, 'top': 15, 'right': 15, 'bottom': 0},
+                                            'pieSliceText': 'value'
+                                        }
+                                    });
+
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Name', 'Polulation'],
+                                        [arr[0] , arr[1]],
+                                        ['Elisa', 7],
+                                        ['Robert', 3],
+                                        ['John', 2],
+                                        ['Jessica', 6],
+                                        ['Aaron', 1],
+                                        ['Margareth', 8]
+                                    ]);
+
+                                    dashboard.bind(programmaticSlider, programmaticChart);
+                                    dashboard.draw(data);
+
+                                    programmaticChart.setOption('is3D', true);
+                                    programmaticChart.draw();
+                                }
+                                // end of drawing google chart
+
                             });
-
-                            function drawStuff() {
-
-                                var dashboard = new google.visualization.Dashboard(
-                                    document.getElementById('programmatic_dashboard_div'));
-
-                                // We omit "var" so that programmaticSlider is visible to changeRange.
-                                var programmaticSlider = new google.visualization.ControlWrapper({
-                                    'controlType': 'NumberRangeFilter',
-                                    'containerId': 'programmatic_control_div',
-                                    'options': {
-                                        'filterColumnLabel': 'Polulation',
-                                        'ui': {'labelStacking': 'vertical'}
-                                    }
-                                });
-
-                                var programmaticChart  = new google.visualization.ChartWrapper({
-                                    'chartType': 'PieChart',
-                                    'containerId': 'programmatic_chart_div',
-                                    'options': {
-                                        'width': 900,
-                                        'height': 550,
-                                        'legend': 'none',
-                                        'chartArea': {'left': 15, 'top': 15, 'right': 15, 'bottom': 0},
-                                        'pieSliceText': 'value'
-                                    }
-                                });
-
-                                var data = google.visualization.arrayToDataTable([
-                                    ['Name', 'Polulation'],
-                                    ['Michael' , 5],
-                                    ['Elisa', 7],
-                                    ['Robert', 3],
-                                    ['John', 2],
-                                    ['Jessica', 6],
-                                    ['Aaron', 1],
-                                    ['Margareth', 8]
-                                ]);
-
-                                dashboard.bind(programmaticSlider, programmaticChart);
-                                dashboard.draw(data);
-
-                                programmaticChart.setOption('is3D', true);
-                                programmaticChart.draw();
-                            }
 
                         </script>
                     </div>

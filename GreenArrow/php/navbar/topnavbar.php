@@ -4,9 +4,9 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-
                         <a href="#menu-toggle" class="navbar-brand active" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
                     </li>
+
                 </ul>
                 <ul class="navbar-nav pull-right">
                     <li class="nav-item ">
@@ -14,6 +14,7 @@
                     </li>
                 </ul>
             </div>
+
         </nav>
     </div>
     <!-- /#navbar wrapper -->

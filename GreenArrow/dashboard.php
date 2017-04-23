@@ -28,6 +28,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="./js/hashmap.js"></script>
+
 </head>
 
 <body>
@@ -62,9 +64,15 @@
                                 google.charts.load("current", {packages:["calendar"]});
                                 google.charts.setOnLoadCallback(drawChart);
 
+                                var datesMap = new HashMap();
+
                                 function drawChart() {
 
-                                    jQuery.get('./dataset/Chicago.txt', function(txt) {
+                                    var dataTable = new google.visualization.DataTable();
+                                    dataTable.addColumn({ type: 'date', id: 'Date' });
+                                    dataTable.addColumn({ type: 'number', id: 'Crime Number' });
+
+                                    jQuery.get('./dataset/chicago_all.txt', function(txt) {
                                         //$('#output').text(txt);
                                         dataStr= new String(txt);
 
@@ -75,7 +83,9 @@
 
                                         // for (i = 0; i < dataFile.length;) {
                                         // alert(dataFile.length)
-                                        for (i = 0; i < dataStr.length;) {
+                                        var preDate = new Date("1970-01-01");
+                                        var cnt = 0;
+                                        for (i = 0; i < 20000;) {
                                             var primary_type_i = dataStr.indexOf("primary_type", i);
                                             var start_of_primary_type_i = dataStr.indexOf(":", primary_type_i);
                                             var end_of_primary_type_i = dataStr.indexOf(",", primary_type_i);
@@ -83,34 +93,72 @@
                                             //alert(primary_type);
                                             var date_i = dataStr.indexOf("updated_on", end_of_primary_type_i);
                                             var start_of_date_i = dataStr.indexOf(":", date_i);
-                                            var date = dataStr.substring(start_of_date_i + 2, start_of_date_i + 12);
+                                            var date = new Date(dataStr.substring(start_of_date_i + 2, start_of_date_i + 12));
 
-                                            //alert(date);
-                                            i += start_of_date_i;
+                                            cnt++;
+                                            if (preDate.getTime() != date.getTime() && cnt > 100){
+                                                console.log(date);
+                                                console.log(cnt);
+
+                                                dataTable.addRows([[date, cnt]]);
+                                                cnt = 0;
+                                                preDate = date;
+
+                                                var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+
+                                                var options = {
+                                                    title: "Crime Number",
+                                                    height: 20000,
+                                                    calendar: { cellSize: 20 },
+                                                };
+
+                                                chart.draw(dataTable, options);
+                                            }
+                                            console.log(date);
+                                            console.log(cnt);
+                                            // console.log(date, datesMap.get(date));
+                                            // alert(date);
+                                            i = start_of_date_i + 1;
                                         }
-                                        //alert(dataStr);
+                                        // alert(dataStr);
 
                                     });
 
-                                    var dataTable = new google.visualization.DataTable();
-                                    dataTable.addColumn({ type: 'date', id: 'Date' });
-                                    dataTable.addColumn({ type: 'number', id: 'Crime Number' });
-                                    dataTable.addRows([
-                                        [ new Date(2012, 3, 13), 37032 ],
-                                        [ new Date(2012, 3, 14), 38024 ],
-                                        [ new Date(2012, 3, 15), 38024 ],
-                                        [ new Date(2012, 3, 16), -38108 ],
-                                        [ new Date(2012, 3, 17), 38229 ],
-                                        // Many rows omitted for brevity.
-                                        [ new Date(2013, 9, 4), 38177 ],
-                                        [ new Date(2013, 9, 5), 24560 ],
-                                        [ new Date(2013, 9, 12), 15000 ],
-                                        [ new Date(2013, 9, 13), 38029 ],
-                                        [ new Date(2013, 9, 19), 38823 ],
-                                        [ new Date(2013, 9, 23), 38345 ],
-                                        [ new Date(2013, 9, 24), 38436 ],
-                                        [ new Date(2013, 9, 30), 38447 ]
-                                    ]);
+
+//                                    dataTable.addRows([
+//                                        [ new Date(2012, 3, 13), 37032 ],
+//                                        [ new Date(2012, 3, 14), 38024 ],
+//                                        [ new Date(2012, 3, 15), 38024 ],
+//                                        [ new Date(2012, 3, 16), -38108 ],
+//                                        [ new Date(2012, 3, 17), 38229 ],
+//                                        ]);
+//                                    dataTable.addRows([
+//                                        // Many rows omitted for brevity.
+//                                        [ new Date(2013, 9, 4), 38177 ],
+//                                        [ new Date(2013, 9, 5), 24560 ],
+//                                        [ new Date(2013, 9, 12), 15000 ],
+//                                        [ new Date(2013, 9, 13), 38029 ],
+//                                        [ new Date(2013, 9, 19), 38823 ],
+//                                        [ new Date(2013, 9, 23), 38345 ],
+//                                        [ new Date(2013, 9, 24), 38436 ],
+//                                        [ new Date(2013, 9, 30), 38447 ]
+//                                    ]);
+//                                    dataTable.addRows([
+//                                        [ new Date(2012, 3, 13), 37032 ],
+//                                        [ new Date(2012, 3, 14), 38024 ],
+//                                        [ new Date(2012, 3, 15), 38024 ],
+//                                        [ new Date(2012, 3, 16), -38108 ],
+//                                        [ new Date(2012, 3, 17), 38229 ],
+//                                        // Many rows omitted for brevity.
+//                                        [ new Date(2013, 9, 4), 38177 ],
+//                                        [ new Date(2013, 9, 5), 24560 ],
+//                                        [ new Date(2013, 9, 12), 15000 ],
+//                                        [ new Date(2013, 9, 13), 38029 ],
+//                                        [ new Date(2013, 9, 19), 38823 ],
+//                                        [ new Date(2013, 9, 23), 38345 ],
+//                                        [ new Date(2013, 9, 24), 38436 ],
+//                                        [ new Date(2013, 9, 30), 38447 ]
+//                                    ]);
 
                                     var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
 
@@ -120,14 +168,12 @@
                                         calendar: { cellSize: 20 },
                                     };
 
-
-
                                     chart.draw(dataTable, options);
                                 }
                         </script>
                     </div>
                     <!-- /calendar -->
-                    <div id="calendar_basic" style="width: 1200px; height: 350px;"></div>
+                    <div id="calendar_basic" style="width: 1200px; height: 1000px;"></div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a href="./index.php">Maps</a>
+                <a href="./index.php">USA Overview</a>
             </li>
             <li>
                 <a href="./dashboard.php">Dashboard</a>

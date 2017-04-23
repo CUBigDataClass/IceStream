@@ -94,6 +94,8 @@
 
                                     var dashboard = new google.visualization.Dashboard(
                                         document.getElementById('programmatic_dashboard_div'));
+                                    var dashboard1 = new google.visualization.Dashboard(
+                                        document.getElementById('programmatic_dashboard_div1'));
 
                                     // We omit "var" so that programmaticSlider is visible to changeRange.
                                     var programmaticSlider = new google.visualization.ControlWrapper({
@@ -104,21 +106,50 @@
                                             'ui': {'labelStacking': 'vertical'}
                                         }
                                     });
+                                    var programmaticSlider1 = new google.visualization.ControlWrapper({
+                                        'controlType': 'NumberRangeFilter',
+                                        'containerId': 'programmatic_control_div1',
+                                        'options': {
+                                            'filterColumnLabel': 'ViolentCrime1',
+                                            'ui': {'labelStacking': 'vertical'}
+                                        }
+                                    });
 
                                     var programmaticChart  = new google.visualization.ChartWrapper({
                                         'chartType': 'PieChart',
                                         'containerId': 'programmatic_chart_div',
                                         'options': {
-                                            'width': 900,
-                                            'height': 550,
+                                            'width': 600,
+                                            'height': 600,
                                             'legend': 'none',
+                                            'is3D': true,
                                             'chartArea': {'left': 15, 'top': 15, 'right': 15, 'bottom': 0},
-                                            'pieSliceText': 'value'
+                                            'pieSliceText': 'value',
+                                            'animation':{
+                                                'duration': 1000,
+                                                'easing': 'out'
+                                            }
+                                        }
+                                    });
+                                    var programmaticChart1  = new google.visualization.ChartWrapper({
+                                        'chartType': 'PieChart',
+                                        'containerId': 'programmatic_chart_div1',
+                                        'options': {
+                                            'width': 600,
+                                            'height': 600,
+                                            'legend': 'none',
+                                            'is3D': true,
+                                            'chartArea': {'left': 15, 'top': 15, 'right': 15, 'bottom': 0},
+                                            'pieSliceText': 'value',
+                                            'animation':{
+                                                'duration': 1000,
+                                                'easing': 'out'
+                                            }
                                         }
                                     });
 
-                                    var data = google.visualization.arrayToDataTable([
-                                        ['Name', 'Polulation'],
+                                    // Some raw data (not necessarily accurate)
+                                    var data0 = [['Name', 'Polulation'],
                                         [arr[1][0], parseInt(arr[1][1])],
                                         [arr[2][0], parseInt(arr[2][1])],
                                         [arr[3][0], parseInt(arr[3][1])],
@@ -170,14 +201,82 @@
                                         [arr[49][0], parseInt(arr[49][1])],
                                         [arr[50][0], parseInt(arr[50][1])],
                                         [arr[51][0], parseInt(arr[51][1])],
-                                        [arr[52][0], parseInt(arr[52][1])],
-                                    ]);
+                                        [arr[52][0], parseInt(arr[52][1])]
+                                    ];
+                                    var data1 = [['Name', 'ViolentCrime1'],
+                                        [arr[1][0], parseInt(arr[1][2])],
+                                        [arr[2][0], parseInt(arr[2][2])],
+                                        [arr[3][0], parseInt(arr[3][2])],
+                                        [arr[4][0], parseInt(arr[4][2])],
+                                        [arr[5][0], parseInt(arr[5][2])],
+                                        [arr[6][0], parseInt(arr[6][2])],
+                                        [arr[7][0], parseInt(arr[7][2])],
+                                        [arr[8][0], parseInt(arr[8][2])],
+                                        [arr[9][0], parseInt(arr[9][2])],
+                                        [arr[10][0], parseInt(arr[10][2])],
+                                        [arr[11][0], parseInt(arr[11][2])],
+                                        [arr[12][0], parseInt(arr[12][2])],
+                                        [arr[13][0], parseInt(arr[13][2])],
+                                        [arr[14][0], parseInt(arr[14][2])],
+                                        [arr[15][0], parseInt(arr[15][2])],
+                                        [arr[16][0], parseInt(arr[16][2])],
+                                        [arr[17][0], parseInt(arr[17][2])],
+                                        [arr[18][0], parseInt(arr[18][2])],
+                                        [arr[19][0], parseInt(arr[19][2])],
+                                        [arr[20][0], parseInt(arr[20][2])],
+                                        [arr[21][0], parseInt(arr[21][2])],
+                                        [arr[22][0], parseInt(arr[22][2])],
+                                        [arr[23][0], parseInt(arr[23][2])],
+                                        [arr[24][0], parseInt(arr[24][2])],
+                                        [arr[25][0], parseInt(arr[25][2])],
+                                        [arr[26][0], parseInt(arr[26][2])],
+                                        [arr[27][0], parseInt(arr[27][2])],
+                                        [arr[28][0], parseInt(arr[28][2])],
+                                        [arr[29][0], parseInt(arr[29][2])],
+                                        [arr[30][0], parseInt(arr[30][2])],
+                                        [arr[31][0], parseInt(arr[31][2])],
+                                        [arr[32][0], parseInt(arr[32][2])],
+                                        [arr[33][0], parseInt(arr[33][2])],
+                                        [arr[34][0], parseInt(arr[34][2])],
+                                        [arr[35][0], parseInt(arr[35][2])],
+                                        [arr[36][0], parseInt(arr[36][2])],
+                                        [arr[37][0], parseInt(arr[37][2])],
+                                        [arr[38][0], parseInt(arr[38][2])],
+                                        [arr[39][0], parseInt(arr[39][2])],
+                                        [arr[40][0], parseInt(arr[40][2])],
+                                        [arr[41][0], parseInt(arr[41][2])],
+                                        [arr[42][0], parseInt(arr[42][2])],
+                                        [arr[43][0], parseInt(arr[43][2])],
+                                        [arr[44][0], parseInt(arr[44][2])],
+                                        [arr[45][0], parseInt(arr[45][2])],
+                                        [arr[46][0], parseInt(arr[46][2])],
+                                        [arr[47][0], parseInt(arr[47][2])],
+                                        [arr[48][0], parseInt(arr[48][2])],
+                                        [arr[49][0], parseInt(arr[49][2])],
+                                        [arr[50][0], parseInt(arr[50][2])],
+                                        [arr[51][0], parseInt(arr[51][2])],
+                                        [arr[52][0], parseInt(arr[52][2])]
+                                    ];
+
+                                    // Create and populate the data tables.
+                                    var data = [];
+                                    data[0] = google.visualization.arrayToDataTable(data0);
+                                    data[1] = google.visualization.arrayToDataTable(data1);
+
+                                    var options = {
+                                        animation:{
+                                            duration: 1000,
+                                            easing: 'out'
+                                        },
+                                    };
 
                                     dashboard.bind(programmaticSlider, programmaticChart);
-                                    dashboard.draw(data);
+                                    dashboard.draw(data[0], options);
+                                    dashboard1.bind(programmaticSlider1, programmaticChart1);
+                                    dashboard1.draw(data[1], options);
 
-                                    programmaticChart.setOption('is3D', true);
                                     programmaticChart.draw();
+                                    programmaticChart1.draw();
                                     // end of drawing pie chart
 
                                     // draw bubble chart
@@ -313,8 +412,18 @@
                     <!-- /dashboard -->
 
                     <!-- dashboard div -->
-                    <div id="programmatic_control_div" align="center" style="min-width: 400px"></div>
-                    <div id="programmatic_chart_div" align="center" ></div>
+                    <div id="dashboard">
+                        <table>
+                            <tr>
+                                <td><div id="programmatic_control_div" align="center" style="min-width: 400px"></div></td>
+                                <td><div id="programmatic_control_div1" align="center" style="min-width: 400px"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div id="programmatic_chart_div" align="center" ></div></td>
+                                <td><div id="programmatic_chart_div1" align="center" ></div></td>
+                            </tr>
+                        </table>
+                    </div>
                     <!-- /dashboard div -->
 
                     <!-- bubble chart div -->

@@ -58,122 +58,96 @@
                     <!-- dashboard - start -->
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-                    <!-- calendar -->
+                    <!-- dashboard -->
                     <div id="calendar">
                         <script type="text/javascript">
-                                google.charts.load("current", {packages:["calendar"]});
-                                google.charts.setOnLoadCallback(drawChart);
+                            google.charts.load('current', {'packages':['corechart', 'controls']});
+                            google.charts.setOnLoadCallback(drawStuff);
 
-                                var datesMap = new HashMap();
+                            function drawStuff() {
 
-                                function drawChart() {
+                                var dashboard = new google.visualization.Dashboard(
+                                    document.getElementById('programmatic_dashboard_div'));
 
-                                    var dataTable = new google.visualization.DataTable();
-                                    dataTable.addColumn({ type: 'date', id: 'Date' });
-                                    dataTable.addColumn({ type: 'number', id: 'Crime Number' });
+                                // We omit "var" so that programmaticSlider is visible to changeRange.
+                                var programmaticSlider = new google.visualization.ControlWrapper({
+                                    'controlType': 'NumberRangeFilter',
+                                    'containerId': 'programmatic_control_div',
+                                    'options': {
+                                        'filterColumnLabel': 'Donuts eaten',
+                                        'ui': {'labelStacking': 'vertical'}
+                                    }
+                                });
 
-                                    jQuery.get('./dataset/chicago_all.txt', function(txt) {
-                                        //$('#output').text(txt);
-                                        dataStr= new String(txt);
+                                var programmaticChart  = new google.visualization.ChartWrapper({
+                                    'chartType': 'PieChart',
+                                    'containerId': 'programmatic_chart_div',
+                                    'options': {
+                                        'width': 300,
+                                        'height': 300,
+                                        'legend': 'none',
+                                        'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
+                                        'pieSliceText': 'value'
+                                    }
+                                });
 
-                                        // construct map
+                                var data = google.visualization.arrayToDataTable([
+                                    ['Name', 'Donuts eaten'],
+                                    ['Michael' , 5],
+                                    ['Elisa', 7],
+                                    ['Robert', 3],
+                                    ['John', 2],
+                                    ['Jessica', 6],
+                                    ['Aaron', 1],
+                                    ['Margareth', 8]
+                                ]);
 
+                                dashboard.bind(programmaticSlider, programmaticChart);
+                                dashboard.draw(data);
 
-                                        // end of constructing map
+                                changeRange = function() {
+                                    programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
+                                    programmaticSlider.draw();
+                                };
 
-                                        // for (i = 0; i < dataFile.length;) {
-                                        // alert(dataFile.length)
-                                        var preDate = new Date("1970-01-01");
-                                        var cnt = 0;
-                                        for (i = 0; i < 20000;) {
-                                            var primary_type_i = dataStr.indexOf("primary_type", i);
-                                            var start_of_primary_type_i = dataStr.indexOf(":", primary_type_i);
-                                            var end_of_primary_type_i = dataStr.indexOf(",", primary_type_i);
-                                            var primary_type = dataStr.substring(start_of_primary_type_i + 2, end_of_primary_type_i - 1);
-                                            //alert(primary_type);
-                                            var date_i = dataStr.indexOf("updated_on", end_of_primary_type_i);
-                                            var start_of_date_i = dataStr.indexOf(":", date_i);
-                                            var date = new Date(dataStr.substring(start_of_date_i + 2, start_of_date_i + 12));
+                                programmaticChart.setOption('is3D', true);
+                                programmaticChart.draw();
+                            }
 
-                                            cnt++;
-                                            if (preDate.getTime() != date.getTime() && cnt > 100){
-                                                console.log(date);
-                                                console.log(cnt);
-
-                                                dataTable.addRows([[date, cnt]]);
-                                                cnt = 0;
-                                                preDate = date;
-
-                                                var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
-
-                                                var options = {
-                                                    title: "Crime Number",
-                                                    height: 20000,
-                                                    calendar: { cellSize: 20 },
-                                                };
-
-                                                chart.draw(dataTable, options);
-                                            }
-                                            console.log(date);
-                                            console.log(cnt);
-                                            // console.log(date, datesMap.get(date));
-                                            // alert(date);
-                                            i = start_of_date_i + 1;
-                                        }
-                                        // alert(dataStr);
-
-                                    });
-
-
-//                                    dataTable.addRows([
-//                                        [ new Date(2012, 3, 13), 37032 ],
-//                                        [ new Date(2012, 3, 14), 38024 ],
-//                                        [ new Date(2012, 3, 15), 38024 ],
-//                                        [ new Date(2012, 3, 16), -38108 ],
-//                                        [ new Date(2012, 3, 17), 38229 ],
-//                                        ]);
-//                                    dataTable.addRows([
-//                                        // Many rows omitted for brevity.
-//                                        [ new Date(2013, 9, 4), 38177 ],
-//                                        [ new Date(2013, 9, 5), 24560 ],
-//                                        [ new Date(2013, 9, 12), 15000 ],
-//                                        [ new Date(2013, 9, 13), 38029 ],
-//                                        [ new Date(2013, 9, 19), 38823 ],
-//                                        [ new Date(2013, 9, 23), 38345 ],
-//                                        [ new Date(2013, 9, 24), 38436 ],
-//                                        [ new Date(2013, 9, 30), 38447 ]
-//                                    ]);
-//                                    dataTable.addRows([
-//                                        [ new Date(2012, 3, 13), 37032 ],
-//                                        [ new Date(2012, 3, 14), 38024 ],
-//                                        [ new Date(2012, 3, 15), 38024 ],
-//                                        [ new Date(2012, 3, 16), -38108 ],
-//                                        [ new Date(2012, 3, 17), 38229 ],
-//                                        // Many rows omitted for brevity.
-//                                        [ new Date(2013, 9, 4), 38177 ],
-//                                        [ new Date(2013, 9, 5), 24560 ],
-//                                        [ new Date(2013, 9, 12), 15000 ],
-//                                        [ new Date(2013, 9, 13), 38029 ],
-//                                        [ new Date(2013, 9, 19), 38823 ],
-//                                        [ new Date(2013, 9, 23), 38345 ],
-//                                        [ new Date(2013, 9, 24), 38436 ],
-//                                        [ new Date(2013, 9, 30), 38447 ]
-//                                    ]);
-
-                                    var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
-
-                                    var options = {
-                                        title: "Crime Number",
-                                        height: 500,
-                                        calendar: { cellSize: 20 },
-                                    };
-
-                                    chart.draw(dataTable, options);
-                                }
                         </script>
                     </div>
-                    <!-- /calendar -->
-                    <div id="calendar_basic" style="width: 1200px; height: 1000px;"></div>
+                    <!-- /dashboard -->
+
+                    <!-- dashboard div -->
+                    <div id="programmatic_dashboard_div" style="border: 1px solid #ccc">
+                        <table class="columns">
+                            <tr>
+                                <td>
+                                    <div id="programmatic_control_div" style="padding-left: 2em; min-width: 250px"></div>
+                                    <div>
+<!--                                        <button style="margin: 1em 1em 1em 2em" onclick="changeRange();">-->
+<!--                                            Select range [2, 5]-->
+<!--                                        </button><br />-->
+                                    </div>
+                                    <script type="text/javascript">
+                                        function changeRange() {
+                                            programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
+                                            programmaticSlider.draw();
+                                        }
+
+                                        function changeOptions() {
+                                            programmaticChart.setOption('is3D', true);
+                                            programmaticChart.draw();
+                                        }
+                                    </script>
+                                </td>
+                                <td>
+                                    <div id="programmatic_chart_div"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /dashboard div -->
                 </div>
             </div>
         </div>

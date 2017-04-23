@@ -28,8 +28,12 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="./js/hashmap.js"></script>
-    <script src="./js/jquery.csv-0.71.js"></script>
+    <script src="./js/jquery.csv.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <link href="http://code.jquery.com/ui/1.9.0/themes/cupertino/jquery-ui.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <script></script>
+    <script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 </head>
@@ -65,6 +69,12 @@
                             google.charts.load('current', {'packages':['corechart', 'controls']});
                             google.charts.setOnLoadCallback(drawStuff);
 
+                            jQuery.get('dataset/table_5_crime_in_the_united_states_by_state_2015.csv', function(txt) {
+                                //$('#output').text(txt);
+                                dataFile = new String(txt);
+
+                            });
+
                             function drawStuff() {
 
                                 var dashboard = new google.visualization.Dashboard(
@@ -79,9 +89,6 @@
                                         'ui': {'labelStacking': 'vertical'}
                                     }
                                 });
-
-                                var data = $.csv.toObjects('./dataset/table_5_crime_in_the_united_states_by_state_2015.csv');
-                                console.log(data);
 
                                 var programmaticChart  = new google.visualization.ChartWrapper({
                                     'chartType': 'PieChart',
@@ -109,11 +116,6 @@
                                 dashboard.bind(programmaticSlider, programmaticChart);
                                 dashboard.draw(data);
 
-                                changeRange = function() {
-                                    programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
-                                    programmaticSlider.draw();
-                                };
-
                                 programmaticChart.setOption('is3D', true);
                                 programmaticChart.draw();
                             }
@@ -123,25 +125,15 @@
                     <!-- /dashboard -->
 
                     <!-- dashboard div -->
-                    <div id="programmatic_dashboard_div" style="border: 1px solid #ccc">
+                    <div id="programmatic_dashboard_div" style="border: 2px solid #ccc">
                         <table class="columns">
                             <tr>
                                 <td>
-                                    <div id="programmatic_control_div" style="padding-left: 2em; min-width: 250px"></div>
-                                    <div>
-<!--                                        <button style="margin: 1em 1em 1em 2em" onclick="changeRange();">-->
-<!--                                            Select range [2, 5]-->
-<!--                                        </button><br />-->
-                                    </div>
+                                    <div id="programmatic_control_div" style="padding-left: 2em; min-width: 400px"></div>
                                     <script type="text/javascript">
                                         function changeRange() {
                                             programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
                                             programmaticSlider.draw();
-                                        }
-
-                                        function changeOptions() {
-                                            programmaticChart.setOption('is3D', true);
-                                            programmaticChart.draw();
                                         }
                                     </script>
                                 </td>

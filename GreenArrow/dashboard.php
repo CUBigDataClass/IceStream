@@ -289,7 +289,11 @@
                                             vAxis: {
                                                 title: 'MotorVehicleTheft'
                                             },
-                                            bars: 'horizontal'
+                                            bars: 'horizontal',
+                                            animation:{
+                                                duration: 10000,
+                                                easing: 'out'
+                                            }
                                         };
                                         var materialChart = new google.charts.Bar(document.getElementById('bar_chart_div'));
                                         google.charts.Bar(document.getElementById('bar_chart_div'));
@@ -306,25 +310,15 @@
                     <!-- /dashboard -->
 
                     <!-- dashboard div -->
-                    <div id="programmatic_dashboard_div" style="border: 2px solid #ccc">
-                        <table class="columns">
-                            <tr>
-                                <td>
-                                    <div id="programmatic_control_div" style="padding-left: 8em; min-width: 400px"></div>
-                                </td>
-                                <td>
-                                    <div id="programmatic_chart_div"></div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    <div id="programmatic_control_div" align="center" style="min-width: 400px"></div>
+                    <div id="programmatic_chart_div" align="center" ></div>
                     <!-- /dashboard div -->
 
                     <!-- bubble chart div -->
-                    <div id="bubble_chart_div" align="center" style="width: 1600px; height: 2000px;"></div>
+                    <div id="bubble_chart_div" align="center" style="width: 1200px; height: 1200px;"></div>
                     <!-- /bubble chart div -->
 
-                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 600px;></div>
+                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 300px;></div>
 
                 </div>
             </div>

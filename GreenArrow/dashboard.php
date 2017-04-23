@@ -36,6 +36,9 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -318,28 +321,36 @@
                     <div id="bubble_chart_div" align="center" style="width: 1200px; height: 1200px;"></div>
                     <!-- /bubble chart div -->
 
-                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 300px;></div>
+                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 300px;"></div>
 
                 </div>
             </div>
         </div>
+        <!-- #scrollUp -->
+        <div id="scrollUp" align="center">
+            <br/><br/>
+            <a href="#top"><button id="top" class="btn btn-success">Back to top</button></a>
+        </div>
+        <!-- /#scrollUp -->
     </div>
     <!-- /#page-content-wrapper -->
 
 </div>
 <!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
 <!-- Menu Toggle Script -->
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+<!-- scroll up Script -->
+<script>
+    $("a[href='#top']").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
     });
 </script>
 

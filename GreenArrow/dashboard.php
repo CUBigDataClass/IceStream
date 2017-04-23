@@ -51,35 +51,54 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+
+                    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
                     <!-- dashboard - start -->
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-                    <div id="timeline">
+                    <!-- calendar -->
+                    <div id="calendar">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
-                            google.charts.load("current", {packages:["timeline"]});
-                            google.charts.setOnLoadCallback(drawChart);
-                            function drawChart() {
-                                var container = document.getElementById('example2.1');
-                                var chart = new google.visualization.Timeline(container);
-                                var dataTable = new google.visualization.DataTable();
+                                google.charts.load("current", {packages:["calendar"]});
+                                google.charts.setOnLoadCallback(drawChart);
 
-                                dataTable.addColumn({ type: 'string', id: 'Term' });
-                                dataTable.addColumn({ type: 'string', id: 'Name' });
-                                dataTable.addColumn({ type: 'date', id: 'Start' });
-                                dataTable.addColumn({ type: 'date', id: 'End' });
+                                function drawChart() {
+                                    var dataTable = new google.visualization.DataTable();
+                                    dataTable.addColumn({ type: 'date', id: 'Date' });
+                                    dataTable.addColumn({ type: 'number', id: 'Crime Number' });
+                                    dataTable.addRows([
+                                        [ new Date(2012, 3, 13), 37032 ],
+                                        [ new Date(2012, 3, 14), 38024 ],
+                                        [ new Date(2012, 3, 15), 38024 ],
+                                        [ new Date(2012, 3, 16), -38108 ],
+                                        [ new Date(2012, 3, 17), 38229 ],
+                                        // Many rows omitted for brevity.
+                                        [ new Date(2013, 9, 4), 38177 ],
+                                        [ new Date(2013, 9, 5), 24560 ],
+                                        [ new Date(2013, 9, 12), 15000 ],
+                                        [ new Date(2013, 9, 13), 38029 ],
+                                        [ new Date(2013, 9, 19), 38823 ],
+                                        [ new Date(2013, 9, 23), 38345 ],
+                                        [ new Date(2013, 9, 24), 38436 ],
+                                        [ new Date(2013, 9, 30), 38447 ]
+                                    ]);
 
-                                dataTable.addRows([
-                                    [ '1', 'George Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
-                                    [ '2', 'John Adams',        new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
-                                    [ '3', 'Thomas Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
+                                    var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
 
-                                chart.draw(dataTable);
-                            }
+                                    var options = {
+                                        title: "Crime Number",
+                                        height: 500,
+                                        calendar: { cellSize: 20 },
+
+                                    };
+
+                                    chart.draw(dataTable, options);
+                                }
                         </script>
                     </div>
-
-
-                    <div id="example2.1" style="height: 200px;"></div>
+                    <!-- /calendar -->
+                    <div id="calendar_basic" style="width: 1200px; height: 350px;"></div>
                 </div>
             </div>
         </div>

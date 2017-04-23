@@ -35,7 +35,7 @@ public class Parser {
         JsonParser mJsonParser = new JsonParser();
         JsonArray array = mJsonParser.parse(fileAsString).getAsJsonObject().getAsJsonArray("data");
 
-        ArrayList<Crime> crimes = new ArrayList<Crime>(array.size());
+        ArrayList<Crime> crimes = new ArrayList<Crime>();
         for (int i = 0; i < array.size(); ++i) {
             crimes.add(new Crime((JsonArray) array.get(i)));
         }
@@ -44,7 +44,7 @@ public class Parser {
     }
 
     public static String getJsonFilePath(){
-        return Parser.class.getResource("rows.json").getPath();
+        return "/Users/chihwei/Downloads/rows.json";
 
     }
 }

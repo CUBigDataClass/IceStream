@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>OpenLayers Simplest Example</title>
+<link rel="stylesheet" href="https://openlayers.org/en/v4.0.1/css/ol.css" type="text/css">
+</head>
+<body>
+<div id="Map" style="height:500px  ;width: 500px"></div>
+
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script>
+    var zoom           = 6;
+    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+
+    map = new OpenLayers.Map("Map");
+    var mapnik         = new OpenLayers.Layer.OSM();
+    map.addLayer(mapnik);
+
+    var positions = [
+       [ -118.3764, 34.0426 ],
+       [ -118.2707, 34.0611 ],
+    ];
+
+    var markers = new OpenLayers.Layer.Markers( "Markers");
+    map.addLayer(markers);
+
+
+    for (var i=0; i<positions.length; i++){
+        var lon = positions[i][0];
+        var lat = positions[i][1];
+        var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
+        var size = new OpenLayers.Size(20,30);
+        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+        var icon = new OpenLayers.Icon('http://www.clker.com/cliparts/y/b/j/m/C/x/map-marker-md.png', size, offset);
+        markers.addMarker(new OpenLayers.Marker(position, icon));
+    }
+
+
+    map.setCenter(position, zoom);
+</script>
+</body>
+</html>

@@ -64,14 +64,36 @@
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
                     <!-- dashboard -->
-                    <div id="calendar">
+                    <div id="dashboard" align="center">
                         <script type="text/javascript">
                             google.charts.load('current', {'packages':['corechart', 'controls']});
                             google.charts.setOnLoadCallback(drawStuff);
 
-                            jQuery.get('dataset/table_5_crime_in_the_united_states_by_state_2015.csv', function(txt) {
-                                //$('#output').text(txt);
-                                dataFile = new String(txt);
+                            jQuery.get('dataset/table_5_crime_in_the_united_states_by_state_2015.csv', function(data) {
+                                dataStr = new String(data);
+//                                var State = new Array();
+//                                var Poplulation = new Array();
+//                                var ViolentCrime1 = new Array();
+//                                var MurderAndNonnegligentManslaughter = new Array();
+//                                var Rape2 = new Array();
+//                                var Rape3 = new Array();
+//                                var Robbery = new Array();
+//                                var AggravatedAssault = new Array();
+//                                var PropertyCrime = new Array();
+//                                var Burglary = new Array();
+//                                var Larceny = new Array();
+//                                var MotorVehicleTheft = new Array();
+//                                var ViolentCrimeRate = new Array();
+
+                                var arr = new Array(13);
+
+                                var dataLines = dataStr.split("\n");
+                                for (i = 0; i < 53; i++) {
+                                    console.log(dataLines[i]);
+                                    if (i > 0) {
+
+                                    }
+                                }
 
                             });
 
@@ -85,7 +107,7 @@
                                     'controlType': 'NumberRangeFilter',
                                     'containerId': 'programmatic_control_div',
                                     'options': {
-                                        'filterColumnLabel': 'Donuts eaten',
+                                        'filterColumnLabel': 'Polulation',
                                         'ui': {'labelStacking': 'vertical'}
                                     }
                                 });
@@ -94,16 +116,16 @@
                                     'chartType': 'PieChart',
                                     'containerId': 'programmatic_chart_div',
                                     'options': {
-                                        'width': 600,
-                                        'height': 400,
+                                        'width': 900,
+                                        'height': 550,
                                         'legend': 'none',
-                                        'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
+                                        'chartArea': {'left': 15, 'top': 15, 'right': 15, 'bottom': 0},
                                         'pieSliceText': 'value'
                                     }
                                 });
 
                                 var data = google.visualization.arrayToDataTable([
-                                    ['Name', 'Donuts eaten'],
+                                    ['Name', 'Polulation'],
                                     ['Michael' , 5],
                                     ['Elisa', 7],
                                     ['Robert', 3],
@@ -129,7 +151,7 @@
                         <table class="columns">
                             <tr>
                                 <td>
-                                    <div id="programmatic_control_div" style="padding-left: 2em; min-width: 400px"></div>
+                                    <div id="programmatic_control_div" style="padding-left: 8em; min-width: 400px"></div>
                                     <script type="text/javascript">
                                         function changeRange() {
                                             programmaticSlider.setState({'lowValue': 2, 'highValue': 5});

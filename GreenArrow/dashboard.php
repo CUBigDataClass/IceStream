@@ -482,7 +482,7 @@
                     </div>
                     <!-- /dashboard div -->
 
-                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 700px;"></div>
+                    <div id="bar_chart_div"  align="center" style="width: 1200px; height: 700px;"></div>
 
                     <br/><br/><br/>
                     <div id="buttonDiv" align="center">

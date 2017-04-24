@@ -286,8 +286,9 @@
                                         var data = google.visualization.arrayToDataTable([
                                             ['State', 'ViolentCrime1' ,'MurderAndNonnegligentManslaughter', 'Rape1', 'Rape2', 'Robbery', 'AggravatedAssault', 'PropertyCrime', 'Burglary', 'Larceny-theft', 'MotorVehicleTheft'],
                                             [arr[1][0], parseFloat(arr[1][2]), parseInt(arr[1][3]), parseInt(arr[1][4]), parseInt(arr[1][5]), parseInt(arr[1][6]), parseInt(arr[1][7]), parseInt(arr[1][8]), parseInt(arr[1][9]), parseInt(arr[1][10]), parseInt(arr[1][11])],
-                                            [arr[2][0], parseFloat(arr[2][2]), parseInt(arr[2][3]), parseInt(arr[1][4]), parseInt(arr[1][5]), parseInt(arr[1][6]), parseInt(arr[1][7]), parseInt(arr[1][8]), parseInt(arr[1][9]), parseInt(arr[1][10]), parseInt(arr[1][11])],
-
+                                            [arr[2][0], parseFloat(arr[2][2]), parseInt(arr[2][3]), parseInt(arr[2][4]), parseInt(arr[2][5]), parseInt(arr[2][6]), parseInt(arr[2][7]), parseInt(arr[2][8]), parseInt(arr[2][9]), parseInt(arr[2][10]), parseInt(arr[2][11])],
+                                            [arr[3][0], parseFloat(arr[3][2]), parseInt(arr[3][3]), parseInt(arr[3][4]), parseInt(arr[3][5]), parseInt(arr[3][6]), parseInt(arr[3][7]), parseInt(arr[3][8]), parseInt(arr[3][9]), parseInt(arr[3][10]), parseInt(arr[3][11])],
+                                            [arr[4][0], parseFloat(arr[4][2]), parseInt(arr[4][3]), parseInt(arr[4][4]), parseInt(arr[4][5]), parseInt(arr[4][6]), parseInt(arr[4][7]), parseInt(arr[4][8]), parseInt(arr[4][9]), parseInt(arr[4][10]), parseInt(arr[4][11])],
                                         ]);
 
                                         var materialOptions = {
@@ -331,10 +332,8 @@
                                             }
                                         };
 
-                                        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-
-                                        var addButton = document.getElementById('add');
-                                        var removeButton = document.getElementById('remove');
+                                        var addButton = document.getElementById('addColumn');
+                                        var removeButton = document.getElementById('removeColumn');
                                         // Disabling the buttons while the chart is drawing.
                                         addButton.disabled = true;
                                         removeButton.disabled = true;
@@ -347,22 +346,13 @@
                                             });
                                         materialChart.draw(data, materialOptions);
 
-                                        function setValueAndDrawChart() {
-                                            for (var i = 0; i < data.getNumberOfRows(); i++) {
-                                                for (var j = 1; j < data.getNumberOfColumns(); j++) {
-                                                    var num = Math.floor(Math.random() * 1000);
-                                                    data.setValue(i, j, num);
-                                                }
-                                            }
-                                            materialChart.draw(data, materialOptions);
-                                        }
                                         addButton.onclick = function() {
                                             var numOfCol = data.getNumberOfColumns();
-                                            if (numOfCol < arr[0].length - 1) {
-                                                var nextColName = arr[0][numOfCol];
+                                            if (numOfCol < arr[0].length - 2) {
+                                                var nextColName = arr[0][numOfCol + 1];
                                                 data.addColumn('number', nextColName);
                                                 for (var i = 0; i < data.getNumberOfRows(); i++) {
-                                                    data.setValue(i, numOfCol, parseInt(arr[i][numOfCol]));
+                                                    data.setValue(i, numOfCol, parseInt(arr[i][numOfCol + 1]));
                                                 }
                                                 materialChart.draw(data, materialOptions);
                                             }
@@ -466,14 +456,16 @@
                     </div>
                     <!-- /dashboard div -->
 
-                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 300px;"></div>
+                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 700px;"></div>
 
-                    <br/>
+                    <br/><br/><br/>
                     <div id="buttonDiv" align="center">
-                        <button id="add" class="btn btn-success">Add</button>
-                        <button id="remove" class="btn btn-danger">Remove</button>
+                        <button id="last4States" class="btn btn-primary">< Last 4 States</button>
+                        <button id="addColumn" class="btn btn-success">Add A Column</button>
+                        <button id="removeColumn" class="btn btn-danger">Remove A Column</button>
+                        <button id="next4States" class="btn btn-primary">Next 4 States ></button>
                     </div>
-                    <div id="bubble_chart_div" align="center" style="width: 1200px; height: 1200px;"></div>
+                    <div id="bubble_chart_div" align="center" style="width: 1200px; height: 1000px;"></div>
 
                 </div>
             </div>

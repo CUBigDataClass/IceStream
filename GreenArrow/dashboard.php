@@ -502,6 +502,10 @@
             <a href="#top"><button id="top" class="btn btn-success">Back to top</button></a>
         </div>
         <!-- /#scrollUp -->
+
+        <?php
+        include './php/copyrightFooter.php';
+        ?>
     </div>
     <!-- /#page-content-wrapper -->
 

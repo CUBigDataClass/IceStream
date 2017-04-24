@@ -174,6 +174,10 @@
                 </div>
             </div>
         </div>
+
+        <?php
+        include './php/copyrightFooter.php';
+        ?>
     </div>
     <!-- /#page-content-wrapper -->
 

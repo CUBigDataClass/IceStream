@@ -58,6 +58,14 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
+                    <!-- button for map -->
+                    <div id="buttonDiv" align="center">
+                        <button id="addCluster" class="btn btn-success">Add Cluster</button>
+                        <button id="changeAnimation" class="btn btn-primary">Change Animation</button>
+                        <br/><br/>
+                    </div>
+                    <!-- /button for map -->
+
                     <!-- google maps - start -->
                     <div id="googlemaps">
                         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -123,10 +131,25 @@
                                             i = end_of_latitude_i + 1;
                                         }
 
-                                        var markerCluster = new MarkerClusterer(map, markers,
-                                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-
-
+                                        var markerCluster = null;
+                                        var addClusterButton = document.getElementById("addCluster");
+                                        var changeAnimationButton = document.getElementById("changeAnimation");
+                                        addClusterButton.onclick = function() {
+                                            if (markerCluster == null) markerCluster = new MarkerClusterer(map, markers,
+                                                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+                                        }
+                                        var animation = "DROP";
+                                        changeAnimationButton.onclick = function() {
+                                            if (animation == "DROP") {
+                                                for (var i = 0; i < markers.length; i++)
+                                                    markers[i].setAnimation(google.maps.Animation.BOUNCE);
+                                                animation = "BOUNCE";
+                                            } else {
+                                                for (var i = 0; i < markers.length; i++)
+                                                    markers[i].setAnimation(google.maps.Animation.DROP);
+                                                animation = "DROP";
+                                            }
+                                        }
                                     });
 
                                 }

@@ -2,13 +2,10 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a href="./index.php">Maps</a>
+                <a href="./index.php">USA Overview</a>
             </li>
             <li>
                 <a href="./dashboard.php">Dashboard</a>
-            </li>
-            <li>
-                <a href="./usa_overview_d3.php">D3</a>
             </li>
             <li>
                 <a href="https://github.com/CUBigDataClass/IceStream">Github</a>

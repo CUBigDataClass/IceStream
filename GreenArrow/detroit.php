@@ -51,7 +51,7 @@
         <div class="container-fluid">
             <div id="title" align="center">
                 <h3>Crime in Detroit
-                    <span class="label label-default">2009 to present</span>
+                    <span class="label label-default">Extracted Records in 2016</span>
                 </h3>
                 <a href="https://data.detroitmi.gov/Public-Safety/DPD-All-Crime-Incidents-2009-Present-Data-Lens-Pro/bzdg-syqn"> Data Source </a>
                 <!-- http://us-city.census.okfn.org/dataset/crime-stats -->
@@ -112,7 +112,7 @@
                                         // for (i = 0; i < dataFile.length;) {
                                         // alert(dataFile.length)
                                         var marker_i = 0;
-                                        for (i = 0; i < 700000;) {
+                                        for (i = 0; i < 723290;) {
                                             var coordinates_i = dataFile.indexOf("coordinates", i);
                                             var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
                                             var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);

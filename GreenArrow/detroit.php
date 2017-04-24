@@ -59,6 +59,13 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
+                    <!-- button for map -->
+                    <div id="buttonDiv" align="center">
+                        <button id="addCluster" class="btn btn-success">Add Cluster</button>
+                        <br/><br/>
+                    </div>
+                    <!-- /button for map -->
+
                     <!-- google maps - start -->
                     <div id="googlemaps">
                         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -123,9 +130,12 @@
                                             i = end_of_latitude_i + 1;
                                         }
 
-                                        var markerCluster = new MarkerClusterer(map, markers,
-                                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-
+                                        var markerCluster = null;
+                                        var addClusterButton = document.getElementById("addCluster");
+                                        addClusterButton.onclick = function() {
+                                            if (markerCluster == null) markerCluster = new MarkerClusterer(map, markers,
+                                                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+                                        }
 
                                     });
 

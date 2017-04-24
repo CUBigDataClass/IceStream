@@ -148,8 +148,7 @@
                                         }
                                     });
 
-                                    // Some raw data (not necessarily accurate)
-                                    var data0 = [['Name', 'Polulation'],
+                                    var data0 = [['State', 'Polulation'],
                                         [arr[1][0], parseInt(arr[1][1])],
                                         [arr[2][0], parseInt(arr[2][1])],
                                         [arr[3][0], parseInt(arr[3][1])],
@@ -203,7 +202,7 @@
                                         [arr[51][0], parseInt(arr[51][1])],
                                         [arr[52][0], parseInt(arr[52][1])]
                                     ];
-                                    var data1 = [['Name', 'ViolentCrime1'],
+                                    var data1 = [['State', 'ViolentCrime1'],
                                         [arr[1][0], parseInt(arr[1][2])],
                                         [arr[2][0], parseInt(arr[2][2])],
                                         [arr[3][0], parseInt(arr[3][2])],
@@ -295,36 +294,36 @@
                                             chart: {
                                                 title: 'Crime in the United States by State, 2015'
                                             },
-//                                            vAxis: {
-//                                                title: 'ViolentCrime1'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'MurderAndNonnegligentManslaughter'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'Rape1'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'Rape2'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'Robbery'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'AggravatedAssault'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'PropertyCrime'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'Burglary'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'Larceny-theft'
-//                                            },
-//                                            vAxis: {
-//                                                title: 'MotorVehicleTheft'
-//                                            },
+                                            vAxis: {
+                                                title: 'ViolentCrime1'
+                                            },
+                                            vAxis: {
+                                                title: 'MurderAndNonnegligentManslaughter'
+                                            },
+                                            vAxis: {
+                                                title: 'Rape1'
+                                            },
+                                            vAxis: {
+                                                title: 'Rape2'
+                                            },
+                                            vAxis: {
+                                                title: 'Robbery'
+                                            },
+                                            vAxis: {
+                                                title: 'AggravatedAssault'
+                                            },
+                                            vAxis: {
+                                                title: 'PropertyCrime'
+                                            },
+                                            vAxis: {
+                                                title: 'Burglary'
+                                            },
+                                            vAxis: {
+                                                title: 'Larceny-theft'
+                                            },
+                                            vAxis: {
+                                                title: 'MotorVehicleTheft'
+                                            },
                                             bars: 'horizontal',
                                             animation: {
                                                 duration: 1000,
@@ -334,8 +333,8 @@
 
                                         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
-                                        var addButton = document.getElementById('addColumn');
-                                        var removeButton = document.getElementById('removeColumn');
+                                        var addButton = document.getElementById('add');
+                                        var removeButton = document.getElementById('remove');
                                         // Disabling the buttons while the chart is drawing.
                                         addButton.disabled = true;
                                         removeButton.disabled = true;
@@ -348,9 +347,9 @@
                                             });
                                         materialChart.draw(data, materialOptions);
 
-                                        function shuffleAndDrawChart() {
-                                            for (var i = 0; i < data.getNumberOfRows(); ++i) {
-                                                for (var j = 1; j < data.getNumberOfColumns(); ++j) {
+                                        function setValueAndDrawChart() {
+                                            for (var i = 0; i < data.getNumberOfRows(); i++) {
+                                                for (var j = 1; j < data.getNumberOfColumns(); j++) {
                                                     var num = Math.floor(Math.random() * 1000);
                                                     data.setValue(i, j, num);
                                                 }
@@ -358,12 +357,19 @@
                                             materialChart.draw(data, materialOptions);
                                         }
                                         addButton.onclick = function() {
-                                            data.addColumn('number', chars[data.getNumberOfColumns() - 1]);
-                                            shuffleAndDrawChart();
+                                            var numOfCol = data.getNumberOfColumns();
+                                            if (numOfCol < arr[0].length - 1) {
+                                                var nextColName = arr[0][numOfCol];
+                                                data.addColumn('number', nextColName);
+                                                for (var i = 0; i < data.getNumberOfRows(); i++) {
+                                                    data.setValue(i, numOfCol, parseInt(arr[i][numOfCol]));
+                                                }
+                                                materialChart.draw(data, materialOptions);
+                                            }
                                         }
                                         removeButton.onclick = function() {
                                             data.removeColumn(data.getNumberOfColumns() - 1);
-                                            shuffleAndDrawChart();
+                                            materialChart.draw(data, materialOptions);
                                         }
                                         materialChart.draw(data, materialOptions);
                                     }
@@ -464,8 +470,8 @@
 
                     <br/>
                     <div id="buttonDiv" align="center">
-                        <button id="addColumn" class="btn btn-success">Add A Column</button>
-                        <button id="removeColumn" class="btn btn-danger">Remove A Column</button>
+                        <button id="add" class="btn btn-success">Add</button>
+                        <button id="remove" class="btn btn-danger">Remove</button>
                     </div>
                     <div id="bubble_chart_div" align="center" style="width: 1200px; height: 1200px;"></div>
 

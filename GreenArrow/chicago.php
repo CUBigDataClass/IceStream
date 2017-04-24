@@ -50,7 +50,7 @@
         <div class="container-fluid">
             <div id="title" align="center">
                 <h3>Crime in Chicago
-                    <span class="label label-default">2001 to present</span>
+                    <span class="label label-default">Extracted Records in 2017</span>
                 </h3>
                 <a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2"> Data Source </a>
                 <!-- http://us-city.census.okfn.org/dataset/crime-stats -->
@@ -112,7 +112,7 @@
                                         // for (i = 0; i < dataFile.length;) {
                                         // alert(dataFile.length)
                                         var marker_i = 0;
-                                        for (i = 0; i < 800000;) {
+                                        for (i = 0; i < 812000;) {
                                             var coordinates_i = dataFile.indexOf("coordinates", i);
                                             var end_of_longitude_i = dataFile.indexOf(",", coordinates_i);
                                             var end_of_latitude_i = dataFile.indexOf("]", end_of_longitude_i);

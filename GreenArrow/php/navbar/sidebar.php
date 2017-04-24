@@ -1,6 +1,9 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
+        <li style="height: 60px;">
+            <a href="#">_</a>
+        </li>
         <li>
             <a href="./index.php">USA Overview</a>
         </li>

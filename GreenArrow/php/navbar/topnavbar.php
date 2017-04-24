@@ -1,6 +1,6 @@
 <!-- #navbar wrapper -->
 <div id="navbar wrapper">
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top navbar-fixed-top bg-inverse">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav">
                 <li class="nav-item">

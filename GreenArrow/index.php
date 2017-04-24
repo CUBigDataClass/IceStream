@@ -108,6 +108,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -465,6 +468,10 @@
             <a href="#top"><button id="top" class="btn btn-success">Back to top</button></a>
         </div>
         <!-- /#scrollUp -->
+
+        <?php
+            include './php/copyrightFooter.php';
+        ?>
     </div>
     <!-- #page-content-wrapper -->
 

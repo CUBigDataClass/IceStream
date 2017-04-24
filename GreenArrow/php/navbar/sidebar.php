@@ -14,7 +14,7 @@
             <a href="https://github.com/CUBigDataClass/IceStream">Github</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="mailto:bo.cao-1@colorado.edu">Contact</a>
         </li>
         <li>
             <div class="dropdown">

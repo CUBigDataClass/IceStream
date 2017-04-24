@@ -283,6 +283,7 @@
                                     google.charts.setOnLoadCallback(drawMaterial);
 
                                     function drawMaterial() {
+                                        var state_i = 1;
                                         var data = google.visualization.arrayToDataTable([
                                             ['State', 'ViolentCrime1' ,'MurderAndNonnegligentManslaughter', 'Rape1', 'Rape2', 'Robbery', 'AggravatedAssault', 'PropertyCrime', 'Burglary', 'Larceny-theft', 'MotorVehicleTheft'],
                                             [arr[1][0], parseFloat(arr[1][2]), parseInt(arr[1][3]), parseInt(arr[1][4]), parseInt(arr[1][5]), parseInt(arr[1][6]), parseInt(arr[1][7]), parseInt(arr[1][8]), parseInt(arr[1][9]), parseInt(arr[1][10]), parseInt(arr[1][11])],
@@ -334,6 +335,8 @@
 
                                         var addButton = document.getElementById('addColumn');
                                         var removeButton = document.getElementById('removeColumn');
+                                        var last4StatesButton = document.getElementById('last4States');
+                                        var next4StatesButton = document.getElementById('next4States');
                                         // Disabling the buttons while the chart is drawing.
                                         addButton.disabled = true;
                                         removeButton.disabled = true;
@@ -359,6 +362,29 @@
                                         }
                                         removeButton.onclick = function() {
                                             data.removeColumn(data.getNumberOfColumns() - 1);
+                                            materialChart.draw(data, materialOptions);
+                                        }
+
+                                        last4StatesButton.onclick = function() {
+                                            state_i -= 4;
+                                            if (state_i < 0) state_i += 52;
+                                            for (var i = 0; i + state_i < 52 && i < 4; i++) {
+                                                for (var j = 0; j < data.getNumberOfRows(); j++) {
+                                                    if (j < 1) data.setValue(i, j, arr[i + state_i][j]);
+                                                    else data.setValue(i, j, arr[i + state_i][j + 1]);
+                                                }
+                                            }
+                                            materialChart.draw(data, materialOptions);
+                                        }
+                                        next4StatesButton.onclick = function() {
+                                            state_i += 4;
+                                            if (state_i > 52) state_i -= 52;
+                                            for (var i = 0; i + state_i < 52 && i < 4; i++) {
+                                                for (var j = 0; j < data.getNumberOfRows(); j++) {
+                                                    if (j < 1) data.setValue(i, j, arr[i + state_i][j]);
+                                                    else data.setValue(i, j, arr[i + state_i][j + 1]);
+                                                }
+                                            }
                                             materialChart.draw(data, materialOptions);
                                         }
                                         materialChart.draw(data, materialOptions);
@@ -456,7 +482,7 @@
                     </div>
                     <!-- /dashboard div -->
 
-                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 700px;"></div>
+                    <div id="bar_chart_div"  align="center" style="width: 1400px; height: 1000px;"></div>
 
                     <br/><br/><br/>
                     <div id="buttonDiv" align="center">

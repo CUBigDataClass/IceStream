@@ -14,9 +14,9 @@ import twitter4j.TwitterFactory;
  * GreenArrow project needs authentication information. Just ask Bryan: bo.cao-1@colorado.edu :)
  */
 
-public class SearchTweets {
+public class CrweetsSearcher {
 
-	public List<Status> searchTweets(String keyword){
+	public static List<Status> searchTweetsByKeyword(String keyword){
         Twitter twitter = new TwitterFactory().getInstance();
         Query query = new Query(keyword);
         QueryResult result;

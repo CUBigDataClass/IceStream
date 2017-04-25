@@ -153,7 +153,9 @@
                 <div class="card">
                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                     <div align="center" class="avatar">
-                        <img src="./img/Chih-Wei.jpg" class="img-circle" width="200" height="200"/>
+                        <p align="center" data-toggle="tooltip" title="Would you">
+                            <img src="./img/Chih-Wei.jpg" class="img-circle" width="180" height="180"/>
+                        </p>
                     </div>
                     <div align="center" class="content">
                         <p>Chih-Wei Lin</p>
@@ -171,7 +173,9 @@
                 <div class="card">
                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                     <div align="center" class="avatar">
-                        <img src="./img/Bryan.jpg" class="img-circle" width="200" height="200"/>
+                        <p align="center" data-toggle="tooltip" title="like">
+                            <img src="./img/Bryan.jpg" class="img-circle" width="180" height="180"/>
+                        </p>
                     </div>
                     <div align="center" class="content">
                         <p>Bryan Bo Cao (leader)</p>
@@ -189,7 +193,9 @@
                 <div class="card">
                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                     <div align="center" class="avatar">
-                        <img src="./img/Peilun.png" class="img-circle" width="200" height="200"/>
+                        <p align="center" data-toggle="tooltip" title="to">
+                            <img src="./img/Peilun.png" class="img-circle" width="180" height="180"/>
+                        </p>
                     </div>
                     <div align="center" class="content">
                         <p>Peilun Zhang</p>
@@ -209,7 +215,9 @@
                 <div class="card">
                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                     <div align="center" class="avatar">
-                        <img src="./img/Yanli.jpeg" class="img-circle" width="200" height="200"/>
+                        <p align="center" data-toggle="tooltip" title="eat">
+                            <img src="./img/Yanli.jpg" class="img-circle" width="180" height="180"/>
+                        </p>
                     </div>
                     <div align="center" class="content">
                         <p>Yan Li</p>
@@ -227,7 +235,9 @@
                 <div class="card">
                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                     <div align="center" class="avatar">
-                        <img src="./img/Yichen.jpg" class="img-circle" width="200" height="200"/>
+                        <p align="center" data-toggle="tooltip" title="ice cream?">
+                            <img src="./img/Yichen.jpg" class="img-circle" width="180" height="180"/>
+                        </p>
                     </div>
                     <div align="center" class="content">
                         <p>Yi-Chen Kuo</p>

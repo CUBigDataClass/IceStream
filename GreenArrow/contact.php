@@ -194,7 +194,7 @@
                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                     <div align="center" class="avatar">
                         <p align="center" data-toggle="tooltip" title="to">
-                            <img src="./img/Peilun.png" class="img-circle" width="180" height="180"/>
+                            <img src="./img/Peilun.jpg" class="img-circle" width="180" height="180"/>
                         </p>
                     </div>
                     <div align="center" class="content">

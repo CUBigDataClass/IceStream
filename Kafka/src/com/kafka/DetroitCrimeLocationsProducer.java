@@ -1,6 +1,7 @@
-package com;
+package com.kafka;
 
 import java.util.Iterator;
+
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -12,7 +13,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 /**
  * Modified from https://github.com/CameronGregory/kafka/blob/master/TestProducer.java
  */
-public class CrimeLocationsProducer {
+public class DetroitCrimeLocationsProducer {
 	public static void main(String args[]) throws InterruptedException, ExecutionException {
 		Properties props = new Properties();
 		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");
@@ -22,14 +23,14 @@ public class CrimeLocationsProducer {
 		KafkaProducer<String,String> producer = new KafkaProducer<String,String>(props);
 		
 		// boolean sync = false;
-		String topic="crimelocations";
+		String topic="detroit_crimelocations";
 		
-		DatasetURLStreamReader dusr = new DatasetURLStreamReader("https://data.cityofchicago.org/resource/crimes.json");
+		DatasetURLStreamReader dusr = new DatasetURLStreamReader("https://data.detroitmi.gov/resource/i9ph-uyrp.json");
 		Iterator<String> it = dusr.lines.iterator();
 		StringBuilder valueSB = null;
 		while (it.hasNext()) {
 			String line = it.next();
-			// System.out.println(line);
+			 System.out.println(line);
 			//producer.send(producerRecord).get();
 			if (line.contains("latitude")) {
 				int i0 = line.indexOf("\""), i1 = line.indexOf("\"", i0 + 1), 

@@ -1,4 +1,4 @@
-package com;
+package com.kafka;
 
 import java.io.BufferedReader;
 import java.io.IOException;

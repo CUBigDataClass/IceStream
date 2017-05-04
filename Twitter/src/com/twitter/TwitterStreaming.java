@@ -14,7 +14,9 @@ public class TwitterStreaming {
 	public static void main(String[] args) throws TwitterException, IOException{
 	    StatusListener listener = new StatusListener(){
 	        public void onStatus(Status s) {
-	        	if (s.getPlace()!= null) {
+	        	if (s.getPlace()!= null && 
+	        			(s.getText().contains("lost") || s.getText().contains("theif") || s.getText().contains("steal")) 
+	        			|| s.getText().contains("crime") || s.getText().contains("kill")) {
 					System.out.println();
 					System.out.println("getUser(): " + s.getUser());
 					System.out.println("getLang(): " + s.getLang());

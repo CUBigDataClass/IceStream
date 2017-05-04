@@ -7,7 +7,7 @@ import twitter4j.Status;
 public class TwitterRun {
 	public static void main(String[] args) {
 		CrweetsSearcher cs = new CrweetsSearcher();
-		List<Status> ls = cs.searchTweetsByKeyword("robbery");
+		List<Status> ls = cs.searchTweetsByKeyword("thief");
 		for (Status s : ls) {
 			System.out.println();
 			System.out.println("getUser(): " + s.getUser());
